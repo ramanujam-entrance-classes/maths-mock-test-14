@@ -278,6 +278,20 @@ body {
     word-break: break-word;
     overflow-wrap: anywhere;
 }
+
+#student-name-required{
+	test-align: center;
+	color: red;
+	font-size: 5px;
+}
+
+#student-name-required{
+	margin: 0 0 0 -220px;
+	color: red;
+	font-size: 12px;
+	display: none;
+} 
+
     </style>
 </head>
 <body class="tex2jax_ignore">
@@ -304,6 +318,7 @@ body {
     <div id="name-section" class="name-container">
     	<div class="name-box">
         	<h3>Enter Your Name</h3>
+			<span id="student-name-required">Required *</span>
         	<input type="text" id="student-name" placeholder="Your full name" />
         	<button id="start-btn">Start Test</button>
     	</div>
@@ -619,7 +634,7 @@ correct: "(C)"}
     		  const studentDisplay = document.getElementById('student-display');
 
     		 if (!nameInput.value.trim()) {
-        			alert("Please enter your name to start the test!");
+        			document.getElementById("student-name-required").style.display = "inline"; // show
         			return;
     		 }
 
