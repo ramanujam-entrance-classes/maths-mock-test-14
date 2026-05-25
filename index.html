@@ -478,28 +478,56 @@ body {
 /* TAB SYSTEM */
 /* ========================= */
 
+/* ========================= */
+/* BROWSER STYLE TABS */
+/* ========================= */
+
 .tab-buttons {
     display: flex;
-    gap: 10px;
+    border-bottom: 2px solid #d6dcef;
     margin-bottom: 20px;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.tab-buttons::-webkit-scrollbar {
+    display: none;
 }
 
 .tab-btn {
-    flex: 1;
-    min-width: 110px;
-    padding: 10px;
+    padding: 12px 18px;
     border: none;
-    border-radius: 8px;
-    background: #e8ecff;
-    cursor: pointer;
+    background: transparent;
+    color: #555;
+    font-size: 15px;
     font-weight: 600;
-    transition: 0.3s;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.25s ease;
+    white-space: nowrap;
 }
 
+/* Hover */
+.tab-btn:hover {
+    color: #0033cc;
+    background: rgba(52, 152, 219, 0.05);
+}
+
+/* Active tab */
 .tab-btn.active {
-    background: linear-gradient(135deg, #0033cc, #3498db);
-    color: white;
+    color: #0033cc;
+}
+
+/* Bottom active line */
+.tab-btn.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #0033cc, #3498db);
+    border-radius: 3px 3px 0 0;
 }
 
 .tab-content {
