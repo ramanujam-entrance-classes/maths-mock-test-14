@@ -1,14 +1,20 @@
 let questions = [];
-const categoryName =
-    window.categoryName;
-
-const topicName =
-    window.topicName;
 let quizTitle = "";
 const urlParams = new URLSearchParams(window.location.search);
 const SHOW_REVIEW_MODE = urlParams.get("mode") === "review";
 const SHOW_SET_DEBUG = urlParams.get("setno") === "show";
 
+function getParams() {
+    return new URLSearchParams(window.location.search);
+}
+
+function getCategory() {
+    return getParams().get("category");
+}
+
+function getTopic() {
+    return getParams().get("topic");
+}
 function initApp(data) {
     questions = data.questions;
     const setName = new URLSearchParams(window.location.search).get("set");
@@ -600,8 +606,7 @@ function loadSetFile(setNumber) {
         const script =
             document.createElement("script");
 
-        const config =
-            TEST_CATEGORIES[categoryName];
+        const config = TEST_CATEGORIES[getCategory()];
 
         let path = "";
 
