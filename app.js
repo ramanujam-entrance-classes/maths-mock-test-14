@@ -1,4 +1,9 @@
 let questions = [];
+const categoryName =
+    window.categoryName;
+
+const topicName =
+    window.topicName;
 let quizTitle = "";
 const urlParams = new URLSearchParams(window.location.search);
 const SHOW_REVIEW_MODE = urlParams.get("mode") === "review";
@@ -589,16 +594,58 @@ function shuffleWithSeed(array, seed) {
 }
 
 function loadSetFile(setNumber) {
+
     return new Promise((resolve) => {
-        const script = document.createElement("script");
-        script.src = `set_data/${setNumber}.js`;
+
+        const script =
+            document.createElement("script");
+
+        const config =
+            TEST_CATEGORIES[categoryName];
+
+        let path = "";
+
+        // =========================
+        // TOPICWISE
+        // =========================
+
+        if (categoryName === "topicwise") {
+
+            path =
+`${config.folder}/${topicName}/${setNumber}.js`;
+        }
+
+        // =========================
+        // NORMAL CATEGORY
+        // =========================
+
+        else {
+
+            path =
+`${config.folder}/${setNumber}.js`;
+        }
+
+        script.src = path;
 
         script.onload = () => {
-            const dataCopy = JSON.parse(JSON.stringify(window.SET_DATA)); // ✅ clone
+
+            const dataCopy =
+                JSON.parse(
+                    JSON.stringify(window.SET_DATA)
+                );
+
             resolve(dataCopy);
         };
 
-        script.onerror = () => resolve(null);
+        script.onerror = () => {
+
+            console.error(
+                "Failed loading:",
+                path
+            );
+
+            resolve(null);
+        };
 
         document.head.appendChild(script);
     });
