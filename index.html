@@ -1145,70 +1145,74 @@ randomBtn.addEventListener("click", () => {
 
 	function isValidSet(setName) {
 
-    if (!categoryName)
-        return false;
-
-    const configure =
-        TEST_CATEGORIES[categoryName];
-
-    if (!configure)
-        return false;
-
-    if (setName === "random")
-        return true;
-
-    const setNumber =
-        parseInt(setName);
-
-    if (isNaN(setNumber))
-        return false;
-
-    let availableSets = [];
-
-    // ======================
-    // TOPICWISE
-    // ======================
-
-    if (categoryName === "topicwise") {
-
-        if (!topicName)
-            return false;
-
-        const topicConfig =
-            configure.topics[topicName];
-
-        if (!topicConfig)
-            return false;
-
-        availableSets =
-            topicConfig.availableSets;
-    }
-
-    // ======================
-    // NORMAL
-    // ======================
-
-    else {
-
-        availableSets =
-            configure.availableSets;
-    }
-
-    if (
-        availableSets.includes(setNumber)
-    ) {
-        return true;
-    }
-
-    if (
-        cmd === "GhgTYijkX" &&
-        !configure.notAllowed.includes(setNumber)
-    ) {
-        return true;
-    }
-
-    return false;
-}
+	    const params = new URLSearchParams(window.location.search);
+	
+	    const category =
+	        window.categoryName || params.get("category");
+	
+	    const topic =
+	        window.topicName || params.get("topic");
+	
+	    if (!category)
+	        return false;
+	
+	    const configure =
+	        TEST_CATEGORIES[category];
+	
+	    if (!configure)
+	        return false;
+	
+	    if (setName === "random")
+	        return true;
+	
+	    const setNumber =
+	        parseInt(setName);
+	
+	    if (isNaN(setNumber))
+	        return false;
+	
+	    let availableSets = [];
+	
+	    // ======================
+	    // TOPICWISE
+	    // ======================
+	    if (category === "topicwise") {
+	
+	        if (!topic)
+	            return false;
+	
+	        const topicConfig =
+	            configure.topics[topic];
+	
+	        if (!topicConfig)
+	            return false;
+	
+	        availableSets =
+	            topicConfig.availableSets;
+	    }
+	
+	    // ======================
+	    // NORMAL CATEGORY
+	    // ======================
+	    else {
+	
+	        availableSets =
+	            configure.availableSets;
+	    }
+	
+	    if (availableSets.includes(setNumber)) {
+	        return true;
+	    }
+	
+	    if (
+	        cmd === "GhgTYijkX" &&
+	        !configure.notAllowed.includes(setNumber)
+	    ) {
+	        return true;
+	    }
+	
+	    return false;
+	}
 </script>
 
 </body>
