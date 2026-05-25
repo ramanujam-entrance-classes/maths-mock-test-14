@@ -841,10 +841,10 @@ window.addEventListener(
 // DISABLE RIGHT CLICK
 // ===============================
 
-document.addEventListener(
+/*document.addEventListener(
     "contextmenu",
     e => e.preventDefault()
-);
+);*/
 
 // ===============================
 // DISABLE COPY / PASTE
