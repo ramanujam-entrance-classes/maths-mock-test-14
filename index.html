@@ -1068,11 +1068,14 @@ randomBtn.addEventListener("click", () => {
 	}*/
 	  
     const script = document.createElement("script");
-    const config =
-	    TEST_CATEGORIES[categoryName];
-
+    
+	const categoryName = getCategory();
+	const topicName = getTopic();
+	
 	console.log(categoryName);
 	console.log(topicName);
+
+	const config = TEST_CATEGORIES[categoryName];
 	let path = "";
 	
 	if (categoryName === "topicwise") {
@@ -1147,11 +1150,8 @@ randomBtn.addEventListener("click", () => {
 
 	    const params = new URLSearchParams(window.location.search);
 	
-	    const category =
-	        window.categoryName || params.get("category");
-	
-	    const topic =
-	        window.topicName || params.get("topic");
+	    const category = getCategory();
+		const topic = getTopic();
 	
 	    if (!category)
 	        return false;
