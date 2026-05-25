@@ -509,6 +509,35 @@ body {
 	    <div class="name-box">
 	        <h3>Select Mock Test</h3>
 			<span id="set-required">Select valid mock test *</span>
+			<div class="custom-select" style="margin-bottom:12px;">
+			    <select id="category-dropdown">
+			        <option value="">Select Category</option>
+			
+			        <option value="maths">
+			            Maths Practice Test
+			        </option>
+			
+			        <option value="computer">
+			            Computer Test
+			        </option>
+			
+			        <option value="topicwise">
+			            Maths Topic Wise Test
+			        </option>
+			    </select>
+			</div>
+			<div class="custom-select hidden"
+			     id="topic-wrapper"
+			     style="margin-bottom:12px;">
+			
+			    <select id="topic-dropdown">
+			
+			        <option value="">
+			            Select Topic
+			        </option>
+			
+			    </select>
+			</div>
 	        <div class="custom-select">
 	            <select id="set-dropdown">
 	                <option value="">Select Mock Test</option>
@@ -551,14 +580,68 @@ body {
 	
 <script>
   // ✅ CONTROLLED SET LIST
-  const AVAILABLE_SETS = [
-    1,2,3,4,5,6,7,8,9,10,11,12,13,
-    14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32
-  ];
+	const TEST_CATEGORIES = {
 
-  const NOTALLOWED_SETS = [
-    
-  ];
+    maths: {
+
+        title: "Mathematics Mock Test",
+
+        folder: "set_data/maths",
+
+        availableSets: [
+             1,2,3,4,5,6,7,8,9,10,11,12,13,
+   			 14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32
+        ],
+
+        notAllowed: []
+    },
+
+    computer: {
+
+        title: "Computer Mock Test",
+
+        folder: "set_data/computer",
+
+        availableSets: [
+            1,2,3,4,5,6
+        ],
+
+        notAllowed: []
+    },
+
+    topicwise: {
+
+        title: "Maths Topic Wise Test",
+
+        folder: "set_data/topicwise",
+
+        notAllowed: [],
+
+        topics: {
+
+            algebra: {
+
+                title: "Algebra",
+
+                availableSets: [1,2,3]
+            },
+
+            calculus: {
+
+                title: "Calculus",
+
+                availableSets: [1]
+            },
+
+            coordinate: {
+
+                title: "Coordinate Geometry",
+
+                availableSets: [1,2]
+            }
+        }
+    }
+};
   /*
   fetch('set.json')
   .then(response => response.json())
@@ -586,11 +669,26 @@ body {
 	
   const params = new URLSearchParams(window.location.search);
   const setName = params.get("set");
-  const dropdown = document.getElementById("set-dropdown");
+  const categoryName =
+    params.get("category");
+
+const topicName =
+    params.get("topic");
+  const categoryDropdown =
+    document.getElementById("category-dropdown");
+
+const topicDropdown =
+    document.getElementById("topic-dropdown");
+
+const topicWrapper =
+    document.getElementById("topic-wrapper");
+
+const dropdown =
+    document.getElementById("set-dropdown");
   const goBtn = document.getElementById("go-btn");
   const randomBtn = document.getElementById("random-btn");
   const cmd = params.get("cmd");
-
+  
   dropdown.addEventListener("change", () => {
 	    if (dropdown.value) {
 	        dropdown.style.color = "#000";
@@ -600,12 +698,126 @@ body {
 	});
 	
   // 🎯 Populate dropdown
-  AVAILABLE_SETS.forEach(set => {
-    const option = document.createElement("option");
-    option.value = set;
-    option.textContent = `Mock Test Set ${set}`;
-    dropdown.appendChild(option);
-  });
+  function populateSetDropdown(
+    category,
+    topic = null
+) {
+
+    dropdown.innerHTML =
+        `<option value="">Select Mock Test</option>`;
+
+    let sets = [];
+
+    // ======================
+    // TOPICWISE
+    // ======================
+
+    if (category === "topicwise") {
+
+        if (!topic) return;
+
+        sets =
+            TEST_CATEGORIES
+            .topicwise
+            .topics[topic]
+            .availableSets;
+    }
+
+    // ======================
+    // NORMAL CATEGORY
+    // ======================
+
+    else {
+
+        sets =
+            TEST_CATEGORIES[category]
+            .availableSets;
+    }
+
+    sets.forEach(set => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = set;
+
+        option.textContent =
+            `Mock Test Set ${set}`;
+
+        dropdown.appendChild(option);
+    });
+}
+
+	categoryDropdown.addEventListener(
+    "change",
+    () => {
+
+        const category =
+            categoryDropdown.value;
+
+        // Reset set dropdown
+        dropdown.innerHTML =
+            `<option value="">Select Mock Test</option>`;
+
+        // Reset topic dropdown
+        topicDropdown.innerHTML =
+            `<option value="">Select Topic</option>`;
+
+        // ======================
+        // TOPICWISE
+        // ======================
+
+        if (category === "topicwise") {
+
+            topicWrapper.classList.remove(
+                "hidden"
+            );
+
+            const topics =
+                TEST_CATEGORIES
+                .topicwise
+                .topics;
+
+            Object.keys(topics)
+            .forEach(key => {
+
+                const option =
+                    document.createElement("option");
+
+                option.value = key;
+
+                option.textContent =
+                    topics[key].title;
+
+                topicDropdown.appendChild(option);
+            });
+        }
+
+        // ======================
+        // NORMAL
+        // ======================
+
+        else {
+
+            topicWrapper.classList.add(
+                "hidden"
+            );
+
+            populateSetDropdown(category);
+        }
+    }
+);
+	
+topicDropdown.addEventListener(
+    "change",
+    () => {
+
+        populateSetDropdown(
+            categoryDropdown.value,
+            topicDropdown.value
+        );
+    }
+);
 
   // 🎯 Handle GO click
   goBtn.addEventListener("click", () => {
@@ -628,7 +840,14 @@ body {
     } 
     // 👉 Case 2: WEBSITE TEST
     else {*/
-      window.location.href = `?set=${setNumber}`;
+     	const category =
+		    categoryDropdown.value;
+		
+		const topic =
+		    topicDropdown.value;
+		
+		window.location.href =
+		`?category=${category}&topic=${topic}&set=${setNumber}`;
     //}
   });
 
@@ -769,8 +988,23 @@ randomBtn.addEventListener("click", () => {
 	    now.getDate() + "-" +
 	    slotSeeds[slot];
 
-    window.location.href =
-        `?set=random&seed=${seed}`;
+    const category =
+	    categoryDropdown.value;
+	
+	const topic =
+	    topicDropdown.value;
+	
+	if (!category) {
+	
+	    document.getElementById(
+	        "set-required"
+	    ).style.display = "block";
+	
+	    return;
+	}
+	
+	window.location.href =
+	`?category=${category}&topic=${topic}&set=random&seed=${seed}`;
 });
 
   	if (!setName) {
@@ -816,7 +1050,23 @@ randomBtn.addEventListener("click", () => {
 	}*/
 	  
     const script = document.createElement("script");
-    script.src = `set_data/${setName}.js`;
+    const config =
+	    TEST_CATEGORIES[categoryName];
+	
+	let path = "";
+	
+	if (categoryName === "topicwise") {
+	
+	    path =
+	`${config.folder}/${topicName}/${setName}.js`;
+	}
+	else {
+	
+	    path =
+	`${config.folder}/${setName}.js`;
+	}
+	
+	script.src = path;
 
     script.onload = () => {
       initApp(window.SET_DATA);
@@ -874,19 +1124,71 @@ randomBtn.addEventListener("click", () => {
 	}
 
 	function isValidSet(setName) {
-	    const setNumber = parseInt(setName);
-	    // must be a number + must exist in your allowed list
-	    //return !isNaN(setNumber) && AVAILABLE_SETS.includes(setNumber);
 
-    if (setName === "random") return true;
-		// must be a number
-    if (isNaN(setNumber)) return false;
-    // ✅ NORMAL MODE → must be in AVAILABLE_SETS
-    if (AVAILABLE_SETS.includes(setNumber)) return true;
-    // ✅ OVERRIDE MODE → allow any set if cmd=xyz
-    if (cmd === "GhgTYijkX" && !NOTALLOWED_SETS.includes(setNumber)) return true;
+    if (!categoryName)
+        return false;
+
+    const config =
+        TEST_CATEGORIES[categoryName];
+
+    if (!config)
+        return false;
+
+    if (setName === "random")
+        return true;
+
+    const setNumber =
+        parseInt(setName);
+
+    if (isNaN(setNumber))
+        return false;
+
+    let availableSets = [];
+
+    // ======================
+    // TOPICWISE
+    // ======================
+
+    if (categoryName === "topicwise") {
+
+        if (!topicName)
+            return false;
+
+        const topicConfig =
+            config.topics[topicName];
+
+        if (!topicConfig)
+            return false;
+
+        availableSets =
+            topicConfig.availableSets;
+    }
+
+    // ======================
+    // NORMAL
+    // ======================
+
+    else {
+
+        availableSets =
+            config.availableSets;
+    }
+
+    if (
+        availableSets.includes(setNumber)
+    ) {
+        return true;
+    }
+
+    if (
+        cmd === "GhgTYijkX" &&
+        !config.notAllowed.includes(setNumber)
+    ) {
+        return true;
+    }
+
     return false;
-	}
+}
 </script>
 
 </body>
