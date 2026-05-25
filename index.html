@@ -1151,7 +1151,7 @@ randomBtn.addEventListener("click", () => {
     const configure =
         TEST_CATEGORIES[categoryName];
 
-    if (!config)
+    if (!configure)
         return false;
 
     if (setName === "random")
@@ -1202,7 +1202,7 @@ randomBtn.addEventListener("click", () => {
 
     if (
         cmd === "GhgTYijkX" &&
-        !config.notAllowed.includes(setNumber)
+        !configure.notAllowed.includes(setNumber)
     ) {
         return true;
     }
