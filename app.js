@@ -704,10 +704,15 @@ async function generateRandomTestWithSeed(seedNum, seedStr) {
     
     if (categoryName === "topicwise") {
     
-        availableSets =
-            config
-            .topics[topicName]
-            .availableSets;
+        // collect ALL sets from ALL topics
+        availableSets = [];
+    
+        Object.values(config.topics).forEach(topic => {
+            availableSets.push(...topic.availableSets);
+        });
+    
+        // remove duplicates (important)
+        availableSets = [...new Set(availableSets)];
     }
     else {
     
