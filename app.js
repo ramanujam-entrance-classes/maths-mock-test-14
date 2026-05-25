@@ -444,16 +444,22 @@ function startTimer() {
 
 function showLoader() {
     document.body.style.pointerEvents = "none";
-    document
-        .getElementById("loading-overlay")
-        .classList.remove("hidden");
+    const loader =
+        document.getElementById("loading-overlay");
+
+    loader.classList.remove("hidden");
+
+    loader.style.display = "flex";
 }
 
 function hideLoader() {
     document.body.style.pointerEvents = "auto";
-    document
-        .getElementById("loading-overlay")
-        .classList.add("hidden");
+    const loader =
+        document.getElementById("loading-overlay");
+
+    loader.classList.add("hidden");
+
+    loader.style.display = "none";
 }
 
 function getMarkingScheme() {
