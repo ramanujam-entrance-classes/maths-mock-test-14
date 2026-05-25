@@ -442,6 +442,20 @@ function startTimer() {
     }, 1000);
 }
 
+function showLoader() {
+    document.body.style.pointerEvents = "none";
+    document
+        .getElementById("loading-overlay")
+        .classList.remove("hidden");
+}
+
+function hideLoader() {
+    document.body.style.pointerEvents = "auto";
+    document
+        .getElementById("loading-overlay")
+        .classList.add("hidden");
+}
+
 function getMarkingScheme() {
 
     const category = getCategory();
@@ -464,144 +478,149 @@ function getMarkingScheme() {
     };
 }
 
-function submitQuiz() {    
-    examSubmitted = true;
-    enableNavigationLinks();
-    // Exit fullscreen after submission
-    if (document.fullscreenElement) {
-    
-        document.exitFullscreen()
-            .catch(err => console.log(err));
-    }
-    clearInterval(timerInterval);
-    timerBox.classList.add('hidden');
-
-    let timeTakenSeconds = totalTime - timeLeft;
-    let timeTakenMinutes = Math.floor(timeTakenSeconds / 60);
-    let timeTakenSecs = timeTakenSeconds % 60;
-
-    let correctCount = 0;
-    let wrongCount = 0;
-    let notAttemptedCount = 0;
-    let totalMarks = 0;
-    let scoredMarks = 0;
-
-    const studentName = document.getElementById('student-name').value;
-    const labels = ["(A)", "(B)", "(C)", "(D)"];  
-    const MARKS = getMarkingScheme();
-    const CORRECT_MARKS = MARKS.correct;
-    const WRONG_MARKS = MARKS.wrong;
-    const params = new URLSearchParams(window.location.search);
-    const setNo = params.get("set");
-    const configure = TEST_CATEGORIES[categoryName];
-    let currentTestName;
-    if (setNo === "random") {
-        currentTestName = `${configure.title} ${window.TEST_SEED_DATE}`;
-    } else {
-        currentTestName = `${configure.title} ${setNo}`;
-    }
-    questions.forEach((qObj, index) => {
-        const selected = document.querySelector(`input[name="q${index}"]:checked`);
-        const feedback = document.getElementById(`feedback-${index}`);
-        const options = document.querySelectorAll(`input[name="q${index}"]`);
-
-        options.forEach(opt => (opt.disabled = true));
-        feedback.style.display = 'block';
-
-        let userAnswer = selected ? labels[parseInt(selected.value)] : null;
-
-        totalMarks += CORRECT_MARKS;
-
-        if (userAnswer === qObj.correct) {
-            correctCount++;
-            scoredMarks += CORRECT_MARKS;
-
-            document
-                .getElementById(`L-${index}-${selected.value}`)
-                .classList.add('correct');
-
-            feedback.innerHTML = "✅ Correct";
-            feedback.style.color = "var(--success)";
-        } 
-        else if (!selected) {
-            notAttemptedCount++;
-
-            const correctIndex = labels.indexOf(qObj.correct);
-
-            document
-                .getElementById(`L-${index}-${correctIndex}`)
-                .classList.add('correct');
-
-            feedback.innerHTML = `⭕ Not attempted. Correct answer: ${qObj.correct}`;
-            feedback.style.color = "#f39c12";
-        } 
-        else {
-            scoredMarks += WRONG_MARKS;
-            wrongCount++;
-
-            document
-                .getElementById(`L-${index}-${selected.value}`)
-                .classList.add('incorrect');
-
-            const correctIndex = labels.indexOf(qObj.correct);
-
-            document
-                .getElementById(`L-${index}-${correctIndex}`)
-                .classList.add('correct');
-
-            feedback.innerHTML = `❌ Incorrect. Correct answer: ${qObj.correct}`;
-            feedback.style.color = "var(--danger)";
-        }
-    });
-        
-    scoreDisplay.innerHTML = `
-        <div class="scoreBoard" style="font-size:18px; line-height:1.8; font-weight:normal">
-            👤 Student: <b>${studentName}</b><br><br>
-
-            🕒 Time Taken: ${timeTakenMinutes} min ${timeTakenSecs} sec <br><br>
-
-            ✅ Correct: ${correctCount} <br>
-            ❌ Wrong: ${wrongCount} <br>
-            ⭕ Not Attempted: ${notAttemptedCount} <br>
-
-            <hr>
-
-            <span style="font-size:20px; font-weight:500; color:darkblue;">
-                🏆 You have scored: ${scoredMarks} / ${totalMarks}
-            </span><br>
-
-            <span style="font-size:14px; color:#555;">
-                Note: Each correct answer carries +${CORRECT_MARKS} marks and each incorrect answer carries ${WRONG_MARKS} marks.
-            </span>
-        </div>
-    `;
-
-    scoreDisplay.style.display = 'block';
-    submitBtn.classList.add('hidden');
-    restartBtn.classList.remove('hidden');
-    
-    restartBtn.scrollIntoView({
-        behavior: "smooth",
-        block: "end"
-    });
+function submitQuiz() {   
+    showLoader();
     setTimeout(() => {
+        examSubmitted = true;
+        enableNavigationLinks();
+        // Exit fullscreen after submission
+        if (document.fullscreenElement) {
+        
+            document.exitFullscreen()
+                .catch(err => console.log(err));
+        }
+        clearInterval(timerInterval);
+        timerBox.classList.add('hidden');
     
-        window.scrollTo({
-            top: document.body.scrollHeight,
-            behavior: "smooth"
+        let timeTakenSeconds = totalTime - timeLeft;
+        let timeTakenMinutes = Math.floor(timeTakenSeconds / 60);
+        let timeTakenSecs = timeTakenSeconds % 60;
+    
+        let correctCount = 0;
+        let wrongCount = 0;
+        let notAttemptedCount = 0;
+        let totalMarks = 0;
+        let scoredMarks = 0;
+    
+        const studentName = document.getElementById('student-name').value;
+        const labels = ["(A)", "(B)", "(C)", "(D)"];  
+        const MARKS = getMarkingScheme();
+        const CORRECT_MARKS = MARKS.correct;
+        const WRONG_MARKS = MARKS.wrong;
+        const params = new URLSearchParams(window.location.search);
+        const setNo = params.get("set");
+        const configure = TEST_CATEGORIES[categoryName];
+        let currentTestName;
+        if (setNo === "random") {
+            currentTestName = `${configure.title} ${window.TEST_SEED_DATE}`;
+        } else {
+            currentTestName = `${configure.title} ${setNo}`;
+        }
+        questions.forEach((qObj, index) => {
+            const selected = document.querySelector(`input[name="q${index}"]:checked`);
+            const feedback = document.getElementById(`feedback-${index}`);
+            const options = document.querySelectorAll(`input[name="q${index}"]`);
+    
+            options.forEach(opt => (opt.disabled = true));
+            feedback.style.display = 'block';
+    
+            let userAnswer = selected ? labels[parseInt(selected.value)] : null;
+    
+            totalMarks += CORRECT_MARKS;
+    
+            if (userAnswer === qObj.correct) {
+                correctCount++;
+                scoredMarks += CORRECT_MARKS;
+    
+                document
+                    .getElementById(`L-${index}-${selected.value}`)
+                    .classList.add('correct');
+    
+                feedback.innerHTML = "✅ Correct";
+                feedback.style.color = "var(--success)";
+            } 
+            else if (!selected) {
+                notAttemptedCount++;
+    
+                const correctIndex = labels.indexOf(qObj.correct);
+    
+                document
+                    .getElementById(`L-${index}-${correctIndex}`)
+                    .classList.add('correct');
+    
+                feedback.innerHTML = `⭕ Not attempted. Correct answer: ${qObj.correct}`;
+                feedback.style.color = "#f39c12";
+            } 
+            else {
+                scoredMarks += WRONG_MARKS;
+                wrongCount++;
+    
+                document
+                    .getElementById(`L-${index}-${selected.value}`)
+                    .classList.add('incorrect');
+    
+                const correctIndex = labels.indexOf(qObj.correct);
+    
+                document
+                    .getElementById(`L-${index}-${correctIndex}`)
+                    .classList.add('correct');
+    
+                feedback.innerHTML = `❌ Incorrect. Correct answer: ${qObj.correct}`;
+                feedback.style.color = "var(--danger)";
+            }
         });
+            
+        scoreDisplay.innerHTML = `
+            <div class="scoreBoard" style="font-size:18px; line-height:1.8; font-weight:normal">
+                👤 Student: <b>${studentName}</b><br><br>
     
-    }, 300);
-
-    MathJax.typeset();
-
-    sendToLeaderboard(
-      	studentName,
-      	scoredMarks,
-      	currentTestName,
-      	`T-${timeTakenMinutes}:${timeTakenSecs.toString().padStart(2,'0')}`
-    	);
-    document.getElementById("leaderboard-btn").classList.remove("hidden");
+                🕒 Time Taken: ${timeTakenMinutes} min ${timeTakenSecs} sec <br><br>
+    
+                ✅ Correct: ${correctCount} <br>
+                ❌ Wrong: ${wrongCount} <br>
+                ⭕ Not Attempted: ${notAttemptedCount} <br>
+    
+                <hr>
+    
+                <span style="font-size:20px; font-weight:500; color:darkblue;">
+                    🏆 You have scored: ${scoredMarks} / ${totalMarks}
+                </span><br>
+    
+                <span style="font-size:14px; color:#555;">
+                    Note: Each correct answer carries +${CORRECT_MARKS} marks and each incorrect answer carries ${WRONG_MARKS} marks.
+                </span>
+            </div>
+        `;
+    
+        scoreDisplay.style.display = 'block';
+        submitBtn.classList.add('hidden');
+        restartBtn.classList.remove('hidden');
+        
+        restartBtn.scrollIntoView({
+            behavior: "smooth",
+            block: "end"
+        });
+        setTimeout(() => {
+        
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: "smooth"
+            });
+        
+        }, 300);
+    
+        MathJax.typeset();
+    
+        sendToLeaderboard(
+          	studentName,
+          	scoredMarks,
+          	currentTestName,
+          	`T-${timeTakenMinutes}:${timeTakenSecs.toString().padStart(2,'0')}`
+        	);
+        document.getElementById("leaderboard-btn").classList.remove("hidden");
+        
+        hideLoader();
+    }, 100);
 }
 
 function sendToLeaderboard(name, score, testName, timeTaken) {
