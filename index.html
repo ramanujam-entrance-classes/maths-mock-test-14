@@ -473,6 +473,54 @@ body {
 .pop {
     animation: popEffect 0.3s ease;
 }
+
+/* =========================
+   Loading Overlay
+========================= */
+
+#loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(3px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999999;
+}
+
+.loader-box {
+    text-align: center;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+
+    border: 6px solid #dfe6e9;
+    border-top: 6px solid #3498db;
+
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+
+    margin: auto;
+}
+
+.loader-text {
+    margin-top: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
  </style>
 </head>
 <body class="tex2jax_ignore">
@@ -575,7 +623,15 @@ body {
     </div>
 	
 </div>
-
+<!-- Loading Overlay -->
+<div id="loading-overlay" class="hidden">
+    <div class="loader-box">
+        <div class="spinner"></div>
+        <div class="loader-text">
+            Calculating Result...
+        </div>
+    </div>
+</div>
 <script src="app.js"></script>
 	
 <script>
