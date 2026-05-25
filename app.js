@@ -781,14 +781,14 @@ finalQuestions = shuffleWithSeed(finalQuestions, mixedSeed5);
 
     // ✅ Trim safety (edge-case protection)
     finalQuestions = finalQuestions.slice(0, TOTAL_QUESTIONS);
-    const config = TEST_CATEGORIES[categoryName];
+    const configure = TEST_CATEGORIES[categoryName];
     /*initApp({
         title: `🎯 Mathematics Mock Test 🎯<br>(${seedStr})`,
         questions: finalQuestions
     });*/
               
     initApp({
-        title: `🎯 ${config.title} 🎯<br>(${seedStr})`,
+        title: `🎯 ${configure.title} 🎯<br>(${seedStr})`,
         questions: finalQuestions
     });
 }
