@@ -429,9 +429,9 @@ function submitQuiz() {
     const setNo = params.get("set");
     let currentTestName;
     if (setNo === "random") {
-        currentTestName = `Mathematics Mock Test ${window.TEST_SEED_DATE}`;
+        currentTestName = `${config.title} ${window.TEST_SEED_DATE}`;
     } else {
-        currentTestName = `Mathematics Mock Test ${setNo}`;
+        currentTestName = `${config.title} ${setNo}`;
     }
     questions.forEach((qObj, index) => {
         const selected = document.querySelector(`input[name="q${index}"]:checked`);
@@ -645,11 +645,32 @@ async function generateRandomTestWithSeed(seedNum, seedStr) {
     if (note) note.classList.remove("hidden");
 
     // ✅ Load all sets
-    const promises = AVAILABLE_SETS.map(set => loadSetFile(set));
+    const config =
+        TEST_CATEGORIES[categoryName];
+    
+    let availableSets = [];
+    
+    if (categoryName === "topicwise") {
+    
+        availableSets =
+            config
+            .topics[topicName]
+            .availableSets;
+    }
+    else {
+    
+        availableSets =
+            config.availableSets;
+    }
+    
+    const promises =
+        availableSets.map(
+            set => loadSetFile(set)
+        );
     const results = await Promise.all(promises);
 
     const validSets = results
-        .map((data, i) => ({ set: AVAILABLE_SETS[i], questions: data?.questions || [] }))
+        .map((data, i) => ({ set: availableSets[i], questions: data?.questions || [] }))
         .filter(d => d.questions.length > 0);
 
     const totalSets = validSets.length;
@@ -713,14 +734,14 @@ finalQuestions = shuffleWithSeed(finalQuestions, mixedSeed5);
 
     // ✅ Trim safety (edge-case protection)
     finalQuestions = finalQuestions.slice(0, TOTAL_QUESTIONS);
-
+    const config = TEST_CATEGORIES[categoryName];
     /*initApp({
         title: `🎯 Mathematics Mock Test 🎯<br>(${seedStr})`,
         questions: finalQuestions
     });*/
               
     initApp({
-        title: `🎯 Mathematics Mock Test 🎯<br>(${seedStr})`,
+        title: `🎯 ${config.title} 🎯<br>(${seedStr})`,
         questions: finalQuestions
     });
 }
