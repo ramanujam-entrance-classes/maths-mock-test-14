@@ -493,11 +493,12 @@ function submitQuiz() {
     const WRONG_MARKS = MARKS.wrong;
     const params = new URLSearchParams(window.location.search);
     const setNo = params.get("set");
+    const configure = TEST_CATEGORIES[categoryName];
     let currentTestName;
     if (setNo === "random") {
-        currentTestName = `${config.title} ${window.TEST_SEED_DATE}`;
+        currentTestName = `${configure.title} ${window.TEST_SEED_DATE}`;
     } else {
-        currentTestName = `${config.title} ${setNo}`;
+        currentTestName = `${configure.title} ${setNo}`;
     }
     questions.forEach((qObj, index) => {
         const selected = document.querySelector(`input[name="q${index}"]:checked`);
