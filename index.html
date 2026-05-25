@@ -669,11 +669,11 @@ body {
 	
   const params = new URLSearchParams(window.location.search);
   const setName = params.get("set");
-  const categoryName =
+  window.categoryName =
     params.get("category");
 
-const topicName =
-    params.get("topic");
+window.topicName =
+	params.get("topic");
   const categoryDropdown =
     document.getElementById("category-dropdown");
 
@@ -846,8 +846,17 @@ topicDropdown.addEventListener(
 		const topic =
 		    topicDropdown.value;
 		
-		window.location.href =
-		`?category=${category}&topic=${topic}&set=${setNumber}`;
+		let url =
+		    `?category=${category}&set=${setNumber}`;
+		
+		if (
+		    category === "topicwise"
+		    && topic
+		) {
+		    url += `&topic=${topic}`;
+		}
+		
+		window.location.href = url;
     //}
   });
 
@@ -988,7 +997,7 @@ randomBtn.addEventListener("click", () => {
 	    now.getDate() + "-" +
 	    slotSeeds[slot];
 
-    const category =
+   const category =
 	    categoryDropdown.value;
 	
 	const topic =
@@ -1003,8 +1012,17 @@ randomBtn.addEventListener("click", () => {
 	    return;
 	}
 	
-	window.location.href =
-	`?category=${category}&topic=${topic}&set=random&seed=${seed}`;
+	let url =
+	`?category=${category}&set=random&seed=${seed}`;
+	
+	if (
+	    category === "topicwise"
+	    && topic
+	) {
+	    url += `&topic=${topic}`;
+	}
+	
+	window.location.href = url;
 });
 
   	if (!setName) {
@@ -1052,7 +1070,9 @@ randomBtn.addEventListener("click", () => {
     const script = document.createElement("script");
     const config =
 	    TEST_CATEGORIES[categoryName];
-	
+
+	console.log(categoryName);
+	console.log(topicName);
 	let path = "";
 	
 	if (categoryName === "topicwise") {
