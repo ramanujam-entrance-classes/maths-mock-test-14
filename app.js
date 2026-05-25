@@ -442,6 +442,28 @@ function startTimer() {
     }, 1000);
 }
 
+function getMarkingScheme() {
+
+    const category = getCategory();
+
+    if (
+        !category ||
+        !TEST_CATEGORIES ||
+        !TEST_CATEGORIES[category]
+    ) {
+
+        return {
+            correct: 12,
+            wrong: -3
+        };
+    }
+
+    return TEST_CATEGORIES[category].marks || {
+        correct: 12,
+        wrong: -3
+    };
+}
+
 function submitQuiz() {    
     examSubmitted = true;
     enableNavigationLinks();
