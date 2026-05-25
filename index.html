@@ -1148,7 +1148,7 @@ randomBtn.addEventListener("click", () => {
     if (!categoryName)
         return false;
 
-    const config =
+    const configure =
         TEST_CATEGORIES[categoryName];
 
     if (!config)
@@ -1175,7 +1175,7 @@ randomBtn.addEventListener("click", () => {
             return false;
 
         const topicConfig =
-            config.topics[topicName];
+            configure.topics[topicName];
 
         if (!topicConfig)
             return false;
@@ -1191,7 +1191,7 @@ randomBtn.addEventListener("click", () => {
     else {
 
         availableSets =
-            config.availableSets;
+            configure.availableSets;
     }
 
     if (
