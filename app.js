@@ -15,6 +15,22 @@ function getCategory() {
 function getTopic() {
     return getParams().get("topic");
 }
+
+function getMarkingScheme() {
+
+    const category = getCategory();
+
+    if (!category || !TEST_CATEGORIES[category]) {
+
+        return {
+            correct: 12,
+            wrong: -3
+        };
+    }
+
+    return TEST_CATEGORIES[category].marks;
+}
+
 function initApp(data) {
     questions = data.questions;
     const setName = new URLSearchParams(window.location.search).get("set");
@@ -32,6 +48,20 @@ function initApp(data) {
     if (heading) heading.classList.remove("hidden");
     if (nameSection) nameSection.classList.remove("hidden");
     if (note) note.classList.remove("hidden");
+
+    const MARKS = getMarkingScheme();
+
+    note.innerHTML = `
+        Note: Each correct answer carries
+        <span style="color:green;font-weight:bold">
+            +${MARKS.correct}
+        </span>
+        marks and each incorrect answer carries
+        <span style="color:red;font-weight:bold">
+            ${MARKS.wrong}
+        </span>
+        marks.
+    `;
 
     // update title
     document.title = data.title;
@@ -412,7 +442,7 @@ function startTimer() {
     }, 1000);
 }
 
-function submitQuiz() {
+function submitQuiz() {    
     examSubmitted = true;
     enableNavigationLinks();
     // Exit fullscreen after submission
@@ -435,7 +465,10 @@ function submitQuiz() {
     let scoredMarks = 0;
 
     const studentName = document.getElementById('student-name').value;
-    const labels = ["(A)", "(B)", "(C)", "(D)"];   
+    const labels = ["(A)", "(B)", "(C)", "(D)"];  
+    const MARKS = getMarkingScheme();
+    const CORRECT_MARKS = MARKS.correct;
+    const WRONG_MARKS = MARKS.wrong;
     const params = new URLSearchParams(window.location.search);
     const setNo = params.get("set");
     let currentTestName;
@@ -454,11 +487,11 @@ function submitQuiz() {
 
         let userAnswer = selected ? labels[parseInt(selected.value)] : null;
 
-        totalMarks += 12;
+        totalMarks += CORRECT_MARKS;
 
         if (userAnswer === qObj.correct) {
             correctCount++;
-            scoredMarks += 12;
+            scoredMarks += CORRECT_MARKS;
 
             document
                 .getElementById(`L-${index}-${selected.value}`)
@@ -480,7 +513,7 @@ function submitQuiz() {
             feedback.style.color = "#f39c12";
         } 
         else {
-            scoredMarks -= 3;
+            scoredMarks += WRONG_MARKS;
             wrongCount++;
 
             document
@@ -515,7 +548,7 @@ function submitQuiz() {
             </span><br>
 
             <span style="font-size:14px; color:#555;">
-                Note: Each correct answer carries +12 marks and each incorrect answer carries −3 marks.
+                Note: Each correct answer carries +${CORRECT_MARKS} marks and each incorrect answer carries ${WRONG_MARKS} marks.
             </span>
         </div>
     `;
