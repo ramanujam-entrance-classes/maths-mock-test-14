@@ -50,9 +50,9 @@ function initApp(data) {
 
     if (metaBox) {
         metaBox.innerHTML = `
-            🧮 ${totalQuestions} Questions
+            📝 ${totalQuestions} Questions
             &nbsp;|&nbsp;
-            ⏱ ${duration} Minutes
+            ⏳ ${duration} Minutes
         `;
     }
     const rangeBox =
