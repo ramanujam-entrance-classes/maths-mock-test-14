@@ -49,7 +49,7 @@ function initApp(data) {
         rangeBox.innerHTML = `
             📝 Total Questions:
             <b>${totalQuestions}</b>
-            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <br>
             ⏱ Duration:
             <b>${config.durationMinutes} Minutes</b>
         `;
