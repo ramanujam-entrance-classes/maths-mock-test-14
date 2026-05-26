@@ -732,11 +732,11 @@ function submitQuiz() {
         }, 300);
     
         MathJax.typeset();
-    
+        const testId = `${getCategory()}:${getTopic() || "na"}:${setNo}`;
         sendToLeaderboard(
           	studentName,
           	scoredMarks,
-          	currentTestName,
+          	testId,
           	`T-${timeTakenMinutes}:${timeTakenSecs.toString().padStart(2,'0')}`
         	);
         document.getElementById("leaderboard-btn").classList.remove("hidden");
