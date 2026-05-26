@@ -138,6 +138,7 @@ function initApp(data) {
         `;    
     }
     attachEvents();
+    hideLoader();
 }
 
 function attachEvents() {
@@ -449,37 +450,55 @@ function enableNavigationLinks() {
 }
 
 function startQuiz() {
-    const nameInput = document.getElementById('student-name');
-    const studentDisplay = document.getElementById('student-display');
+
+    const nameInput =
+        document.getElementById('student-name');
 
     if (!nameInput.value.trim()) {
-        document.getElementById("student-name-required").style.display = "inline";
+
+        document.getElementById("student-name-required")
+            .style.display = "inline";
+
         return;
     }
-    disableNavigationLinks();
-    examStarted = true;
-    enterFullscreen();
-    enableWakeLock();
-    
-    studentDisplay.textContent = `👤 Student: ${nameInput.value}`;
-    document.getElementById('name-section').style.display = 'none';
-    document.getElementById('student-display').style.background = '#f4f8ff';
 
-    studentDisplay.classList.remove('hidden');
+    showLoader("Preparing your test...");
 
-    startBtn.classList.add('hidden');
-    quizContent.classList.remove('hidden');
-    timerBox.classList.remove('hidden');
+    setTimeout(() => {
 
-    initQuiz();
-    MathJax.typeset();
-    const config = TEST_CATEGORIES[getCategory()];
+        examStarted = true;
 
-    totalTime = (config.durationMinutes || 70) * 60;
-    
-    timeLeft = totalTime;
-    
-    startTimer();
+        disableNavigationLinks();
+
+        // ✅ STEP 1: Build quiz FIRST
+        initQuiz();
+        MathJax.typeset();
+
+        // UI updates
+        document.getElementById('name-section').style.display = 'none';
+
+        const studentDisplay =
+            document.getElementById('student-display');
+
+        studentDisplay.textContent =
+            `👤 Student: ${nameInput.value}`;
+
+        studentDisplay.classList.remove('hidden');
+
+        quizContent.classList.remove('hidden');
+        timerBox.classList.remove('hidden');
+
+        startBtn.classList.add('hidden');
+
+        // ✅ STEP 2: THEN fullscreen (after UI ready)
+        enterFullscreen();
+        enableWakeLock();
+
+        startTimer();
+
+        hideLoader();
+
+    }, 50);
 }
 
 function startTimer() {
@@ -504,23 +523,22 @@ function startTimer() {
     }, 1000);
 }
 
-function showLoader() {
+function showLoader(message = "Please wait...") {
     document.body.style.pointerEvents = "none";
-    const loader =
-        document.getElementById("loading-overlay");
+
+    const loader = document.getElementById("loading-overlay");
+
+    loader.querySelector(".loader-text").innerText = message;
 
     loader.classList.remove("hidden");
-
     loader.style.display = "flex";
 }
 
 function hideLoader() {
     document.body.style.pointerEvents = "auto";
-    const loader =
-        document.getElementById("loading-overlay");
+    const loader = document.getElementById("loading-overlay");
 
     loader.classList.add("hidden");
-
     loader.style.display = "none";
 }
 
@@ -547,7 +565,7 @@ function getMarkingScheme() {
 }
 
 function submitQuiz() {   
-    showLoader();
+    showLoader("Evaluating your answers…");
     setTimeout(() => {
         examSubmitted = true;
         enableNavigationLinks();
@@ -799,6 +817,7 @@ function loadSetFile(setNumber, customTopic = null) {
 }
 
 async function generateRandomTestWithSeed(seedNum, seedStr) {
+    showLoader("Generating your challenge...");
     const numericSeed = seedNum;
     const slotBoost = {
         1: 111111,
