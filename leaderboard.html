@@ -244,8 +244,25 @@ function getTestTitle(category) {
 
     return titles[category] || "Unknown Test";
 }
+  
+function getTestTitle(category, topic) {
+
+    if (category === "topicwise") {
+        return topic
+            ? topic.charAt(0).toUpperCase() + topic.slice(1) + " Mock Test"
+            : "Topic Test";
+    }
+
+    const titles = {
+        maths: "Mathematics Mock Test",
+        computer: "Computer Mock Test"
+    };
+
+    return titles[category] || "Unknown Test";
+}
+
 const currentTestName =
-    `${getTestTitle(category)} ${setNo}`;
+    `${getTestTitle(category, topic)} ${setNo}`;
 
 /* show subtitle */
 document.getElementById("testName").innerText = currentTestName;
@@ -343,7 +360,11 @@ function loadLeaderboard() {
             const rows = parseSheet(data);
             console.log("TOTAL ROWS:", rows.length);
             leaderboardData = rows.filter(r => {
-                const testNameMatch = (r[2] || "").toString().trim().toLowerCase() === currentTestName.trim().toLowerCase();
+                const category = params.get("category");
+                const topic = params.get("topic");
+                const setNo = params.get("set");
+                const testId = `${category}:${topic || "na"}:${setNo}`;
+                const testNameMatch = (r[2] || "").toString().trim() === testId;
                 const todayMatch = isToday(r[4]);
                 return testNameMatch && todayMatch;
             });
