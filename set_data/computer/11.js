@@ -5,10 +5,114 @@ window.SET_DATA = {
 	{
 	q: "Which of the following is the CORRECT truth table for the XOR Gate with two binary inputs \\(A\\) and \\(B\\)?",
 	options: [
-	"(A). \\(00\\to1,01\\to1,10\\to1,11\\to0\\)",
-	"(B). \\(00\\to0,01\\to0,10\\to1,11\\to1\\)",
-	"(C). \\(00\\to0,01\\to1,10\\to1,11\\to0\\)",
-	"(D). \\(00\\to1,01\\to0,10\\to0,11\\to1\\)"
+	`(A). <table style="text-align:center;width:100%;border:1px solid black;border-collapse:collapse;">
+			<tr>
+				<th style="text-align:center;border:1px solid black"> \\(A\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(B\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(A \\ XOR \\ B\\) </th>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+		  </table>`,
+	`(B). <table style="text-align:center;width:100%;border:1px solid black;border-collapse:collapse;">
+			<tr>
+				<th style="text-align:center;border:1px solid black"> \\(A\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(B\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(A \\ XOR \\ B\\) </th>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+		  </table>`,
+	`(C). <table style="text-align:center;width:100%;border:1px solid black;border-collapse:collapse;">
+			<tr>
+				<th style="text-align:center;border:1px solid black"> \\(A\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(B\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(A \\ XOR \\ B\\) </th>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+		  </table>`,
+	`(D). <table style="text-align:center;width:100%;border:1px solid black;border-collapse:collapse;">
+			<tr>
+				<th style="text-align:center;border:1px solid black"> \\(A\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(B\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(A \\ XOR \\ B\\) </th>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+		  </table>`
 	],
 	correct: "(C)"
 	},
@@ -60,10 +164,10 @@ window.SET_DATA = {
 	{
 	q: "What is the hexadecimal representation of the decimal number \\(265\\)?",
 	options: [
-	"(A). \\(0x109\\)",
-	"(B). \\(0x411\\)",
-	"(C). \\(0x100001001\\)",
-	"(D). \\(0x190\\)"
+	"(A). \\(0\\)x\\(109\\)",
+	"(B). \\(0\\)x\\(411\\)",
+	"(C). \\(0\\)x\\(100001001\\)",
+	"(D). \\(0\\)x\\(190\\)"
 	],
 	correct: "(A)"
 	},
@@ -124,7 +228,7 @@ window.SET_DATA = {
 	},
 	// Q12
 	{
-	q: "In the design of a control unit of a processor, two common approaches are used: hardware control and microprogrammed control. Consider the following statements: I. Hardware control units are generally faster but more difficult to modify than microprogrammed control units. II. In a horizontal microprogrammed control unit, each control signal has a separate bit in the control word. III. Vertical microprogramming leads to longer control words but provides greater parallelism. IV. Microprogrammed control units are typically easier to implement and modify than hardware control units.",
+	q: `In the design of a control unit of a processor, two common approaches are used: hardware control and microprogrammed control. Consider the following statements: <br>I. Hardware control units are generally faster but more difficult to modify than microprogrammed control units. <br>II. In a horizontal microprogrammed control unit, each control signal has a separate bit in the control word. <br>III. Vertical microprogramming leads to longer control words but provides greater parallelism. <br>IV. Microprogrammed control units are typically easier to implement and modify than hardware control units.`,
 	options: [
 	"(A). I, III and IV only",
 	"(B). II, III and IV only",
@@ -135,7 +239,7 @@ window.SET_DATA = {
 	},
 	// Q13
 	{
-	q: "Consider the Boolean expression \\(X = \\overline{(A + B)} \\cdot C\\) over two Boolean variables \\(A\\) and \\(B\\). Which one of the following Boolean expressions is equivalent to the given Boolean expression \\(X\\)?",
+	q: "Consider the Boolean expression \\(X = \\overline{(A + B) \\cdot C}\\) over two Boolean variables \\(A\\) and \\(B\\). Which one of the following Boolean expressions is equivalent to the given Boolean expression \\(X\\)?",
 	options: [
 	"(A). \\(\\bar{A} \\cdot \\bar{B} + \\bar{C}\\)",
 	"(B). \\(A \\cdot C + \\bar{B} \\cdot \\bar{C}\\)",
@@ -146,7 +250,7 @@ window.SET_DATA = {
 	},
 	// Q14
 	{
-	q: "Consider a \\(9\\)-bit representation. Which of the following correctly gives the smallest number that can be represented in: (i) \\(1\\)'s complement, (ii) \\(2\\)'s complement",
+	q: `Consider a \\(9\\)-bit representation. Which of the following correctly gives the smallest number that can be represented in: <br>(i) \\(1\\)'s complement, <br>(ii) \\(2\\)'s complement`,
 	options: [
 	"(A). (i) \\(-255\\), (ii) \\(-255\\)",
 	"(B). (i) \\(-256\\), (ii) \\(-256\\)",
