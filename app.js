@@ -200,7 +200,12 @@ function initQuiz() {
             <div class="question-text">
                 <span class="q-num">${index + 1}.</span>
                 <span class="q-body">${qObj.q}
-                ${SHOW_SET_DEBUG ? `<span style="color:#888; font-size:12px;"> (Set ${qObj._set})</span>` : ""}
+                ${SHOW_SET_DEBUG ? `<span style="color:#888; font-size:12px;">
+                                        (
+                                            ${qObj._topic ? qObj._topic + " | " : ""}
+                                            Set ${qObj._set}
+                                        )
+                                    </span>` : ""}
                 </span>
             </div>
 
@@ -728,7 +733,7 @@ function shuffleWithSeed(array, seed) {
     return array;
 }
 
-function loadSetFile(setNumber) {
+function loadSetFile(setNumber, customTopic = null) {
 
     return new Promise((resolve) => {
 
@@ -744,9 +749,8 @@ function loadSetFile(setNumber) {
         // =========================
 
         if (categoryName === "topicwise") {
-
-            path =
-`${config.folder}/${topicName}/${setNumber}.js`;
+            const activeTopic = customTopic || topicName;
+            path = `${config.folder}/${activeTopic}/${setNumber}.js`;
         }
 
         // =========================
@@ -833,16 +837,17 @@ async function generateRandomTestWithSeed(seedNum, seedStr) {
     let availableSets = [];
     
     if (categoryName === "topicwise") {
-    
-        // collect ALL sets from ALL topics
         availableSets = [];
+        Object.entries(config.topics).forEach(([topicKey, topicObj]) => {
+            topicObj.availableSets.forEach(setNo => {
     
-        Object.values(config.topics).forEach(topic => {
-            availableSets.push(...topic.availableSets);
+                availableSets.push({
+                    topic: topicKey,
+                    set: setNo
+                });
+    
+            });
         });
-    
-        // remove duplicates (important)
-        availableSets = [...new Set(availableSets)];
     }
     else {
     
@@ -851,13 +856,32 @@ async function generateRandomTestWithSeed(seedNum, seedStr) {
     }
     
     const promises =
-        availableSets.map(
-            set => loadSetFile(set)
-        );
+        availableSets.map(item => {
+    
+            if (categoryName === "topicwise") {
+    
+                return loadSetFile(
+                    item.set,
+                    item.topic
+                );
+            }
+    
+            return loadSetFile(item);
+        });
     const results = await Promise.all(promises);
 
     const validSets = results
-        .map((data, i) => ({ set: availableSets[i], questions: data?.questions || [] }))
+        .map((data, i) => ({
+            set: categoryName === "topicwise"
+                ? availableSets[i].set
+                : availableSets[i],
+        
+            topic: categoryName === "topicwise"
+                ? availableSets[i].topic
+                : null,
+        
+            questions: data?.questions || []
+        }))
         .filter(d => d.questions.length > 0);
 
     const totalSets = validSets.length;
@@ -874,13 +898,14 @@ const shuffledSets = shuffleWithSeed([...validSets], mixedSeed1);
 
         const selectedSets = shuffledSets.slice(0, TOTAL_QUESTIONS);
 
-        selectedSets.forEach(({ set, questions }) => {
+        selectedSets.forEach(({ set, topic, questions }) => {
             const mixedSeed2 = (numericSeed * 9301 + set * 49297) % 233280;
 const shuffledQ = shuffleWithSeed([...questions], mixedSeed2);
             //finalQuestions.push(shuffledQ[0]);
 finalQuestions.push({
     ...shuffledQ[0],
-    _set: set   
+    _set: set,
+    _topic: setObj.topic || null
 });
         });
     }
@@ -898,7 +923,7 @@ finalQuestions.push({
 const shuffledSets = shuffleWithSeed([...validSets], mixedSeed3);
 
         shuffledSets.forEach((setObj, index) => {
-            const { set, questions } = setObj;
+            const { set, topic, questions } = setObj;
 
             const count = baseCount + (index < remainder ? 1 : 0);
 
@@ -909,7 +934,8 @@ const shuffledQ = shuffleWithSeed([...questions], mixedSeed4);
 finalQuestions.push(
     ...shuffledQ.slice(0, count).map(q => ({
         ...q,
-        _set: set   // 👈 add this
+        _set: set,
+        _topic: topic || null
     }))
 );
         });
