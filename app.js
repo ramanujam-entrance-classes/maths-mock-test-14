@@ -32,7 +32,28 @@ function getMarkingScheme() {
 }
 
 function initApp(data) {
-    questions = data.questions;
+    const config = TEST_CATEGORIES[getCategory()];
+    const maxQuestions =
+        config.totalQuestions || 50;
+    questions = questions.slice(0, maxQuestions);
+    
+    const totalQuestions = config.totalQuestions || questions.length;
+    
+    const rangeBox =
+        document.getElementById("question-range");
+    
+    if (rangeBox) {
+    
+        //rangeBox.innerHTML =
+        //    `Question 01 to ${String(totalQuestions).padStart(2, '0')}`;
+        rangeBox.innerHTML = `
+            📝 Total Questions:
+            <b>${totalQuestions}</b>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            ⏱ Duration:
+            <b>${config.durationMinutes} Minutes</b>
+        `;
+    }
     const setName = new URLSearchParams(window.location.search).get("set");
     
     // show heading again (in case hidden before)
@@ -123,7 +144,7 @@ const submitBtn = document.getElementById('submit-btn');
 const restartBtn = document.getElementById('restart-btn');
 const scoreDisplay = document.getElementById('score-display');
 
-let totalTime = 70 * 60;
+let totalTime = 0;
 let timeLeft = totalTime;
 let timerInterval;
 let violationCount = 0;
@@ -438,6 +459,12 @@ function startQuiz() {
 
     initQuiz();
     MathJax.typeset();
+    const config = TEST_CATEGORIES[getCategory()];
+
+    totalTime = (config.durationMinutes || 70) * 60;
+    
+    timeLeft = totalTime;
+    
     startTimer();
 }
 
@@ -785,8 +812,9 @@ async function generateRandomTestWithSeed(seedNum, seedStr) {
     }
     window.TEST_SEED_DATE = seedStr;
 
-    const TOTAL_QUESTIONS = 50;
-
+    const configQues = TEST_CATEGORIES[getCategory()];
+    const TOTAL_QUESTIONS =
+        configQues.totalQuestions || 50;
     const heading = document.getElementById("test-heading");
     const nameSection = document.getElementById("name-section");
     const note = document.getElementById("note-marks");
