@@ -214,10 +214,10 @@ window.SET_DATA = {
 	{
 	q: "Given an unsigned \\(32\\)-bit integer \\(x\\), which of the following \\(C/C++\\) expressions correctly toggles \\(m\\) bits starting from position \\(p\\) (with the least significant bit at position \\(0\\))?",
 	options: [
-	"(A). \\(x\\ \\&\\ \\sim(((1<<m)-1)<<p)\\)",
-	"(B). \\(x\\;((1<<m)<<p)\\)",
-	"(C). \\(x\\oplus(((1<<m)-1)<<p)\\)",
-	"(D). \\(x\\;((1<<m)<<p)\\)"
+	"(A). \\( x\\ \\&\\ \\sim(((1<<m)-1)<<p) \\)",
+	"(B). \\( x\\;((1<<m)<<p) \\)",
+	"(C). \\( x\\oplus(((1<<m)-1)<<p) \\)",
+	"(D). \\( x\\;((1<<m)<<p) \\)"
 	],
 	correct: "(C)"
 	}
