@@ -453,7 +453,9 @@ function enableNavigationLinks() {
 }
 
 function startQuiz() {
+
     if (examStarted) return;
+
     const nameInput =
         document.getElementById('student-name');
 
@@ -465,45 +467,70 @@ function startQuiz() {
         return;
     }
 
-    //showLoader("Preparing your test...");
+    showLoader("Preparing your test...");
 
-    //setTimeout(() => {
+    // 🔒 HARD LOCK before anything starts
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.5";
+    submitBtn.style.pointerEvents = "none";
+
+    setTimeout(() => {
 
         examStarted = true;
 
         disableNavigationLinks();
 
-        // ✅ STEP 1: Build quiz FIRST
+        // =========================
+        // STEP 1: BUILD QUIZ FIRST
+        // =========================
         initQuiz();
         MathJax.typeset();
 
-        // UI updates
-        document.getElementById('name-section').style.display = 'none';
+        // =========================
+        // STEP 2: WAIT FOR PAINT
+        // =========================
+        requestAnimationFrame(() => {
 
-        const studentDisplay =
-            document.getElementById('student-display');
+            // UI updates
+            document.getElementById('name-section').style.display = 'none';
 
-        studentDisplay.textContent =
-            `👤 Student: ${nameInput.value}`;
+            const studentDisplay =
+                document.getElementById('student-display');
 
-        studentDisplay.classList.remove('hidden');
+            studentDisplay.textContent =
+                `👤 Student: ${nameInput.value}`;
 
-        quizContent.classList.remove('hidden');
-        timerBox.classList.remove('hidden');
+            studentDisplay.classList.remove('hidden');
 
-        startBtn.classList.add('hidden');
+            quizContent.classList.remove('hidden');
+            timerBox.classList.remove('hidden');
 
-        // ✅ STEP 2: THEN fullscreen (after UI ready)
-        enterFullscreen();
-        enableWakeLock();
+            startBtn.classList.add('hidden');
 
-        timeLeft = totalTime;
-        clearInterval(timerInterval);
-        startTimer();
+            // =========================
+            // STEP 3: SAFE ENABLE BUTTON
+            // =========================
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+            submitBtn.style.pointerEvents = "auto";
 
-        hideLoader();
+            hideLoader();
 
-    //}, 50);
+            // =========================
+            // STEP 4: DEFER HEAVY OPS
+            // =========================
+            requestAnimationFrame(() => {
+
+                enterFullscreen();
+                enableWakeLock();
+
+                timeLeft = totalTime;
+                clearInterval(timerInterval);
+                startTimer();
+            });
+        });
+
+    }, 50);
 }
 
 function startTimer() {
@@ -570,6 +597,8 @@ function getMarkingScheme() {
 }
 
 function submitQuiz() {   
+    if (!examStarted || examSubmitted) return;
+    
     showLoader("Evaluating your answers…");
     setTimeout(() => {
         examSubmitted = true;
