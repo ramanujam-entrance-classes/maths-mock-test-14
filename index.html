@@ -1288,14 +1288,19 @@ randomBtn.addEventListener("click", () => {
 		
 		    if (!topicConfig) return false;
 		
-		    const availableSets = topicConfig.availableSets;
+		    const { availableSets = [], notAllowed = [] } = topicConfig;
 		
-		    const notAllowed = topicConfig.notAllowed || [];
-		
-		    return (
+		    const isValid =
 		        availableSets.includes(setNumber) &&
-		        !notAllowed.includes(setNumber)
-		    );
+		        !notAllowed.includes(setNumber);
+		
+		    if (isValid) return true;
+		
+		    if (cmd === "xyz" && !notAllowed.includes(setNumber)) {
+		        return true;
+		    }
+		
+		    return false;
 		}
 	
 	    // ======================
