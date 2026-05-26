@@ -42,7 +42,7 @@ window.SET_DATA = {
 	"(A). \\(2\\) milliseconds",
 	"(B). \\(1.5\\) milliseconds",
 	"(C). \\(1.85\\) microseconds",
-	"(D). \\(1.85\\) milliseconds"
+	"(D). \\(18.5\\) milliseconds"
 	],
 	correct: "(D)"
 	},
@@ -92,7 +92,7 @@ window.SET_DATA = {
 	},
 	// Q9
 	{
-	q: "Which of the following in a functionally complete set of gates? I. NAND II. NOR",
+	q: `Which of the following in a functionally complete set of gates? <br>I. NAND <br>II. NOR`,
 	options: [
 	"(A). I but not II",
 	"(B). II but not I",
@@ -114,12 +114,13 @@ window.SET_DATA = {
 	},
 	// Q11
 	{
-	q: "What is the minimal form of Karnaugh map shown below? (Assume that \\(x\\) denotes a don't care term)",
+	q: `What is the minimal form of Karnaugh map shown below? (Assume that \\(x\\) denotes a don't care term)
+		<br> <img src="images/computer_mocktest5_q11.png" alt="Question 11 Diagram" style="max-width:100%; height:auto; display:block; margin:auto;">`,
 	options: [
 	"(A). \\(\\overline{b}\\,\\overline{d}\\)",
 	"(B). \\(\\overline{b}d + \\overline{b}\\,\\overline{c}\\)",
 	"(C). \\(\\overline{b}\\,\\overline{d} + \\overline{a}\\,\\overline{d}\\,\\overline{c}\\,\\overline{d}\\)",
-	"(D). \\(\\overline{b}d + \\overline{b}\\,\\overline{c} + c\\,\\overline{d}\\)"
+	"(D). \\(\\overline{b}\\overline{d} + \\overline{b}\\,\\overline{c} + \\overline{c}\\,\\overline{d}\\)"
 	],
 	correct: "(D)"
 	},
@@ -141,7 +142,7 @@ window.SET_DATA = {
 	"(A). \\(2\\) milliseconds",
 	"(B). \\(1.5\\) milliseconds",
 	"(C). \\(1.85\\) microseconds",
-	"(D). \\(1.85\\) milliseconds"
+	"(D). \\(18.5\\) milliseconds"
 	],
 	correct: "(D)"
 	},
@@ -180,7 +181,8 @@ window.SET_DATA = {
 	},
 	// Q17
 	{
-	q: "The output of the combinational circuit given below is",
+	q: `The output of the combinational circuit given below is
+		<br> <img src="images/computer_mocktest5_q17.png" alt="Question 17 Diagram" style="max-width:100%; height:auto; display:block; margin:auto;">`,
 	options: [
 	"(A). \\(A + B + C\\)",
 	"(B). \\(A(B + C)\\)",
