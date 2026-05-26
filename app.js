@@ -631,6 +631,10 @@ function submitQuiz() {
         const WRONG_MARKS = MARKS.wrong;
         const params = new URLSearchParams(window.location.search);
         const setNo = params.get("set");
+        const actualSetId =
+            setNo === "random"
+                ? window.TEST_SEED_DATE
+                : setNo;
         const configure = TEST_CATEGORIES[categoryName];
         let currentTestName;
         if (setNo === "random") {
@@ -737,8 +741,7 @@ function submitQuiz() {
                 ? window.TEST_SEED_DATE
                 : setNo;
         
-        const testId =
-            `${getCategory()}:${getTopic() || "na"}:${actualSetId}`;
+        const testId = `${getCategory()}:${getTopic() || "na"}:${actualSetId}`;
         sendToLeaderboard(
           	studentName,
           	scoredMarks,
