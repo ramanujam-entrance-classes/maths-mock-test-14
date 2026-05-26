@@ -25,7 +25,8 @@ window.SET_DATA = {
 	},
 	// Q3
 	{
-	q: "The Boolean expression represented by the following Venn diagram is",
+	q: `The Boolean expression represented by the following Venn diagram is
+		<br> <img src="images/computer_mocktest6_q3.png" alt="Question 3 Diagram" style="max-width:100%; height:auto; display:block; margin:auto;">`,
 	options: [
 	"(A). \\(a \\text{ XOR } b\\)",
 	"(B). \\(a'b + ab'\\)",
@@ -69,7 +70,7 @@ window.SET_DATA = {
 	},
 	// Q7
 	{
-	q: "The number of terms in the product of sum canonical form of \\([(x_1 + x_2)(x_3x_4)]\\) is",
+	q: "The number of terms in the product of sum canonical form of \\(|(x_1 + x_2)(x_3x_4)|\\) is",
 	options: [
 	"(A). \\(7\\)",
 	"(B). \\(8\\)",
