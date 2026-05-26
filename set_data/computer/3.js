@@ -3,113 +3,113 @@ window.SET_DATA = {
   questions: [
 	// Q1
 	{
-	q: "Let \\(A[1....10]\\) be an array, let \\(A[i] = 2i\\) for \\(1 \\le i \\le 10\\). After the assignment \\(j = A[A[5]]\\) is executed, the value of \\(A[j]\\) is equal to",
+	q: "What is the hexadecimal representation of the decimal number \\(265\\)?",
 	options: [
-	"(A). Undefined",
-	"(B). \\(1\\)",
-	"(C). \\(5\\)",
-	"(D). \\(10\\)"
+	"(A). \\(0\\)x\\(109\\)",
+	"(B). \\(0\\)x\\(411\\)",
+	"(C). \\(0\\)x\\(100001001\\)",
+	"(D). \\(0\\)x\\(190\\)"
 	],
 	correct: "(A)"
 	},
 	// Q2
 	{
-	q: "The first instruction of bootstrap loader program of an operating system is stored in",
+	q: "Debugger is a program that",
 	options: [
-	"(A). RAM",
-	"(B). BIOS",
-	"(C). Hard disk",
-	"(D). None of these"
-	],
-	correct: "(B)"
-	},
-	// Q3
-	{
-	q: "The function \\(ABC + A'BC + ABC' + A'BC\\) is equivalent to",
-	options: [
-	"(A). \\(AC' + AB + A'C\\)",
-	"(B). \\(AB' + AC' + A'C\\)",
-	"(C). \\(A'B + AC' + AB'\\)",
-	"(D). \\(A'B + AC + AB'\\)"
-	],
-	correct: "(B)"
-	},
-	// Q4
-	{
-	q: "The addition of \\(4\\) bit, \\(2\\)'s complement binary numbers \\(1101\\) and \\(0100\\) results in",
-	options: [
-	"(A). \\(0001\\) and an overflow",
-	"(B). \\(1001\\) and no overflow",
-	"(C). \\(0001\\) and no overflow",
-	"(D). \\(1001\\) and an overflow"
-	],
-	correct: "(C)"
-	},
-	// Q5
-	{
-	q: "Given \\((224)_r = (13)_{10}\\), the value of radix \\(r\\) is",
-	options: [
-	"(A). \\(10\\)",
-	"(B). \\(8\\)",
-	"(C). \\(6\\)",
-	"(D). \\(5\\)"
+	"(A). links object code to produce an executable",
+	"(B). compiles source code to object code",
+	"(C). does not allow step by step execution of a segment of program",
+	"(D). allows to set breakpoints, execute a segment of program and display contents of Register"
 	],
 	correct: "(D)"
 	},
-	// Q6
+	// Q3
 	{
-	q: "Let \\(A = 11111010\\) and \\(B = 00001010\\) be two \\(8\\) bit \\(2\\)'s complement numbers. Their product in \\(2\\)'s complement is",
+	q: "In computer architecture, which of the following correctly matches the fundamental unit used in the CPU, cache, and main memory respectively?",
 	options: [
-	"(A). \\(11000100\\)",
-	"(B). \\(10011100\\)",
-	"(C). \\(10100101\\)",
-	"(D). \\(11010101\\)"
-	],
-	correct: "(A)"
-	},
-	// Q7
-	{
-	q: "Identify the logic function performed by the circuit.",
-	options: [
-	"(A). Exclusive OR",
-	"(B). Exclusive NOR",
-	"(C). NAND",
-	"(D). NOR"
-	],
-	correct: "(B)"
-	},
-	// Q8
-	{
-	q: "Which of the following is (are) true about virtual memory systems that uses pages? I. The virtual address space can be larger than the amount of physical memory. II. Programs must be resident in main memory throughout their execution. III. Pages correspond to semantic characteristics of the programs.",
-	options: [
-	"(A). I only",
-	"(B). II only",
-	"(C). I and II",
-	"(D). I and III"
+	"(A). CPU \\(\\rightarrow\\) Block, Cache \\(\\rightarrow\\) Word, Memory \\(\\rightarrow\\) Page",
+	"(B). CPU \\(\\rightarrow\\) Block, Cache \\(\\rightarrow\\) Page, Memory \\(\\rightarrow\\) Word",
+	"(C). CPU \\(\\rightarrow\\) Word, Cache \\(\\rightarrow\\) Block, Memory \\(\\rightarrow\\) Page",
+	"(D). CPU \\(\\rightarrow\\) Page, Cache \\(\\rightarrow\\) Word, Memory \\(\\rightarrow\\) Block"
 	],
 	correct: "(C)"
 	},
-	// Q9
+	// Q4
 	{
-	q: "The minimum number of gates needed to implement the Boolean function \\(f(x,y,z)=z(x+y)+(\\overline{z}+x+y)(\\overline{x}+\\overline{y})\\) is",
+	q: "Given the Boolean expression \\((A \\oplus B) \\land (B \\rightarrow C)\\), which of the following rows in the truth table would have an output of \\(1\\) (True)?",
 	options: [
-	"(A). \\(2\\)",
-	"(B). \\(3\\)",
-	"(C). \\(4\\)",
-	"(D). \\(5\\)"
+	"(A). \\(A = 1, B = 0, C = 1\\)",
+	"(B). \\(A = 0, B = 0, C = 0\\)",
+	"(C). \\(A = 1, B = 1, C = 1\\)",
+	"(D). \\(A = 0, B = 1, C = 0\\)"
 	],
 	correct: "(A)"
 	},
-	// Q10
+	// Q5
 	{
-	q: "How many bits are required to store an ASCII character?",
+	q: "Which of the following secondary storage devices has the fastest access time: Optical Drive, Magnetic Tape Drive, Hard Disk Drive (HDD), Solid State Drive (SSD)?",
 	options: [
-	"(A). \\(7\\)",
-	"(B). \\(6\\)",
-	"(C). \\(8\\)",
-	"(D). None of these"
+	"(A). Optical Drive",
+	"(B). Hard Disk Drive (HDD)",
+	"(C). Solid State Drive (SSD)",
+	"(D). Magnetic Tape Drive"
+	],
+	correct: "(C)"
+	},
+	// Q6
+	{
+	q: "Which of the following statements about ASCII and Unicode is correct?",
+	options: [
+	"(A). ASCII uses \\(16\\) bits per character, while Unicode uses only \\(7\\) bits.",
+	"(B). ASCII can represent more characters than Unicode because it uses fewer bits per character.",
+	"(C). Unicode is backward compatible with ASCII and includes all ASCII characters in its encoding.",
+	"(D). Unicode and ASCII are completely different and share no common characters."
+	],
+	correct: "(C)"
+	},
+	// Q7
+	{
+	q: `In the design of a control unit of a processor, two common approaches are used: hardware control and microprogrammed control. Consider the following statements: <br>I. Hardware control units are generally faster but more difficult to modify than microprogrammed control units. <br>II. In a horizontal microprogrammed control unit, each control signal has a separate bit in the control word. <br>III. Vertical microprogramming leads to longer control words but provides greater parallelism. <br>IV. Microprogrammed control units are typically easier to implement and modify than hardware control units.`,
+	options: [
+	"(A). I, III and IV only",
+	"(B). II, III and IV only",
+	"(C). I, II and IV only",
+	"(D). I, II, III and IV"
+	],
+	correct: "(C)"
+	},
+	// Q8
+	{
+	q: "Consider the Boolean expression \\(X = \\overline{(A + B) \\cdot C}\\) over two Boolean variables \\(A\\) and \\(B\\). Which one of the following Boolean expressions is equivalent to the given Boolean expression \\(X\\)?",
+	options: [
+	"(A). \\(\\bar{A} \\cdot \\bar{B} + \\bar{C}\\)",
+	"(B). \\(A \\cdot C + \\bar{B} \\cdot \\bar{C}\\)",
+	"(C). \\(\\bar{A} \\cdot \\bar{B} + C\\)",
+	"(D). \\(\\bar{A} + \\bar{B} \\cdot \\bar{C}\\)"
 	],
 	correct: "(A)"
+	},
+	// Q9
+	{
+	q: `Consider a \\(9\\)-bit representation. Which of the following correctly gives the smallest number that can be represented in: <br>(i) \\(1\\)'s complement, <br>(ii) \\(2\\)'s complement`,
+	options: [
+	"(A). (i) \\(-255\\), (ii) \\(-255\\)",
+	"(B). (i) \\(-256\\), (ii) \\(-256\\)",
+	"(C). (i) \\(-256\\), (ii) \\(-255\\)",
+	"(D). (i) \\(-255\\), (ii) \\(-256\\)"
+	],
+	correct: "(D)"
+	},
+	// Q10
+	{
+	q: "Suppose that \\(C\\) represents the set of all countries, \\(R\\) represents the set of all countries that have at least one river flowing through it, \\(M\\) represents the set of all countries that have at least one mountain in it, and \\(D\\) represents the set of all countries that have at least one desert in it. It is given that \\((R \\cup M \\cup D) = C\\). Which one of the following gives the set of all countries that have either a mountain or a river, but does not have a desert in it? The notation \\(D^C\\) represents the complement of the set \\(D\\) with respect to the universal set \\(C\\).",
+	options: [
+	"(A). \\((R \\cup M) - (R \\cap M)\\)",
+	"(B). \\((R \\cup M) \\cap D^C\\)",
+	"(C). \\((R \\cup M) - (R \\cap M \\cap D^C)\\)",
+	"(D). \\((R \\cap M) \\cap D^C\\)"
+	],
+	correct: "(B)"
 	},
 	// Q11
 	{
