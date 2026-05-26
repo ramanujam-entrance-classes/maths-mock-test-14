@@ -225,11 +225,27 @@ let latestRequestId = 0;
 ========================= */
 const params = new URLSearchParams(window.location.search);
 const setNo = params.get("set");
+const category = params.get("category");
+const topic = params.get("topic");
 
-/* 📌 FULL TEST NAME */
-const currentTestName = setNo 
-  ? `Mathematics Mock Test ${setNo}` 
-  : "Unknown Test";
+function getTestTitle(category) {
+
+    const titles = {
+
+        maths:
+            "Mathematics Mock Test",
+
+        computer:
+            "Computer Mock Test",
+
+        topicwise:
+            "Maths Topic Wise Test"
+    };
+
+    return titles[category] || "Unknown Test";
+}
+const currentTestName =
+    `${getTestTitle(category)} ${setNo}`;
 
 /* show subtitle */
 document.getElementById("testName").innerText = currentTestName;
