@@ -32,10 +32,17 @@ function getMarkingScheme() {
 }
 
 function initApp(data) {
-    const config = TEST_CATEGORIES[getCategory()];
+    questions = data.questions || [];
+
+    const config =
+        TEST_CATEGORIES[getCategory()];
+
     const maxQuestions =
-        config.totalQuestions || 50;
-    questions = questions.slice(0, maxQuestions);
+        config?.totalQuestions || questions.length;
+
+    // limit safely
+    questions =
+        questions.slice(0, maxQuestions);
     
     const totalQuestions = config.totalQuestions || questions.length;
     
@@ -44,15 +51,8 @@ function initApp(data) {
     
     if (rangeBox) {
     
-        //rangeBox.innerHTML =
-        //    `Question 01 to ${String(totalQuestions).padStart(2, '0')}`;
-        rangeBox.innerHTML = `
-            📝 Total Questions:
-            <b>${totalQuestions}</b>
-            <br>
-            ⏱ Duration:
-            <b>${config.durationMinutes} Minutes</b>
-        `;
+        rangeBox.innerHTML =
+            `Question 01 to ${String(totalQuestions).padStart(2, '0')}`;
     }
     const setName = new URLSearchParams(window.location.search).get("set");
     
