@@ -732,7 +732,13 @@ function submitQuiz() {
         }, 300);
     
         MathJax.typeset();
-        const testId = `${getCategory()}:${getTopic() || "na"}:${setNo}`;
+        const actualSetId =
+            setNo === "random"
+                ? window.TEST_SEED_DATE
+                : setNo;
+        
+        const testId =
+            `${getCategory()}:${getTopic() || "na"}:${actualSetId}`;
         sendToLeaderboard(
           	studentName,
           	scoredMarks,
