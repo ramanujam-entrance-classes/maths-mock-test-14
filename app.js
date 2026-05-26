@@ -736,12 +736,11 @@ function submitQuiz() {
         }, 300);
     
         MathJax.typeset();
-        const actualSetId =
-            setNo === "random"
-                ? window.TEST_SEED_DATE
-                : setNo;
         
         const testId = `${getCategory()}:${getTopic() || "na"}:${actualSetId}`;
+        console.log("TEST ID:", testId);
+        console.log("SEED:", window.TEST_SEED_DATE);
+        console.log("ACTUALSETID:", actualSetId);
         sendToLeaderboard(
           	studentName,
           	scoredMarks,
