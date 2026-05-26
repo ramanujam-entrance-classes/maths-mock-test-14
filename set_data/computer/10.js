@@ -25,7 +25,64 @@ window.SET_DATA = {
 	},
 	// Q3
 	{
-	q: "The Boolean expression for the following truth table is",
+	q: `The Boolean expression for the following truth table is<br>
+		<table style="text-align:center;width:100%;border:1px solid black;border-collapse:collapse;">
+		<tr>
+		<th style="text-align:center;border:1px solid black"> \\(x\\) </th>
+		<th style="text-align:center;border:1px solid black"> \\(y\\) </th>
+		<th style="text-align:center;border:1px solid black"> \\(z\\) </th>
+		<th style="text-align:center;border:1px solid black"> \\(F\\) </th>
+		</tr>
+		<tr>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		</tr>
+		<tr>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		</tr>
+		<tr>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		</tr>
+		<tr>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		</tr>
+		<tr>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		</tr>
+		<tr>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		</tr>
+		<tr>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+		</tr>
+		<tr>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+		</tr>
+		</table>
+	`,
 	options: [
 	"(A). \\(F=x'yz'+xy'z+xy'z'\\)",
 	"(B). \\(F=x'y'z'+xy'z+xyz'\\)",
@@ -69,7 +126,14 @@ window.SET_DATA = {
 	},
 	// Q7
 	{
-	q: "Consider the program below which uses six temporary variables \\(a,b,c,d,e\\) and \\(f\\). Assuming that all the above operations take their operands from registers, the minimum number of registers needed to execute this program without spilling is",
+	q: `Consider the program below which uses six temporary variables \\(a,b,c,d,e\\) and \\(f\\). <br>
+		a=10 \\implies b=20 <br>
+		c=30 \\implies d=a+c <br>
+		e=b+d \\implies f=c+e <br>
+		b=c+e \\implies e=b+f <br>
+		d=5+e <br>
+		return d+f <br>
+		Assuming that all the above operations take their operands from registers, the minimum number of registers needed to execute this program without spilling is`,
 	options: [
 	"(A). \\(5\\)",
 	"(B). \\(6\\)",
@@ -146,7 +210,8 @@ window.SET_DATA = {
 	},
 	// Q14
 	{
-	q: "In the figure, the circle stands for employed, the square stands for a social worker, the triangle stands for illiterate, and the rectangle stands for truthful. Study the figure with its regions and find the number of neither truthful nor illiterate people among the employed only.",
+	q: `In the figure, the circle stands for employed, the square stands for a social worker, the triangle stands for illiterate, and the rectangle stands for truthful. Study the figure with its regions and find the number of neither truthful nor illiterate people among the employed only.
+		<br> <img src="images/computer_mocktest10_q14.png" alt="Question 14 Diagram" style="max-width:100%; height:auto; display:block; margin:auto;">`,
 	options: [
 	"(A). \\(4\\)",
 	"(B). \\(8\\)",
@@ -179,7 +244,7 @@ window.SET_DATA = {
 	},
 	// Q17
 	{
-	q: "Dynamic RAM (DRAM) stores each bit of data in a separate capacitor. Due to leakage, the stored charge tends to dissipate over time and needs to be refreshed periodically. Consider the following statements: P. DRAM requires refreshing because it uses capacitors to store bits. Q. SRAM does not require refreshing because it uses flip-flops instead of capacitors. R. DRAM is faster than SRAM because it needs less frequent access. S. DRAM is more suitable for main memory than SRAM due to its density.",
+	q: `Dynamic RAM (DRAM) stores each bit of data in a separate capacitor. Due to leakage, the stored charge tends to dissipate over time and needs to be refreshed periodically. Consider the following statements: <br>P. DRAM requires refreshing because it uses capacitors to store bits. <br>Q. SRAM does not require refreshing because it uses flip-flops instead of capacitors. <br>R. DRAM is faster than SRAM because it needs less frequent access. <br>S. DRAM is more suitable for main memory than SRAM due to its density.`,
 	options: [
 	"(A). All statements \\(P,Q,R\\) and \\(S\\) are true",
 	"(B). Only \\(P\\) and \\(Q\\) are true; \\(R\\) is false and \\(S\\) is irrelevant",
@@ -190,7 +255,7 @@ window.SET_DATA = {
 	},
 	// Q18
 	{
-	q: "Consider a system running under two types of workloads: \\(CPU\\)-intensive jobs and \\(I/O\\)-intensive jobs. Which of the following statements about the relative performance of Interrupt-driven I/O and Programmed I/O is correct?",
+	q: `Consider a system running under two types of workloads:<br> (a) \\(CPU\\)-intensive jobs, <br> (b) \\(I/O\\)-intensive jobs. <br>Which of the following statements about the relative performance of Interrupt-driven I/O and Programmed I/O is correct?`,
 	options: [
 	"(A). Interrupt-driven I/O performs better for CPU-intensive jobs by freeing the CPU, while programmed I/O performs better for I/O-intensive jobs due to tighter control",
 	"(B). Interrupt-driven I/O performs better in both CPU-intensive and I/O-intensive workloads because it always reduces CPU involvement",
@@ -212,12 +277,15 @@ window.SET_DATA = {
 	},
 	// Q20
 	{
-	q: "Given an unsigned \\(32\\)-bit integer \\(x\\), which of the following \\(C/C++\\) expressions correctly toggles \\(m\\) bits starting from position \\(p\\) (with the least significant bit at position \\(0\\))?",
+	q: `Given an unsigned \\(32\\)-bit integer \\(x\\), which of the following \\(C/C++\\) expressions correctly toggles \\(m\\) bits starting from position \\(p\\) (with the least significant bit at position \\(0\\))?
+		<br><b>Assume:</b><br>
+		x is the input integer; p is the starting position of the bit range (0-based, LSB at position 0); m is the number of bits to toggle; and No overflow or invalid input conditions occur. <br>
+		Which of the following correctly toggles m bits of x starting from position p?`,
 	options: [
-	"(A). \\( x\\ \\&\\ \\sim(((1<<m)-1)<<p) \\)",
-	"(B). \\( x\\;((1<<m)<<p) \\)",
-	"(C). \\( x\\oplus(((1<<m)-1)<<p) \\)",
-	"(D). \\( x\\;((1<<m)<<p) \\)"
+	"(A). \\( x \\ & \\ \\sim(((1<<m)-1)<<p) \\)",
+	"(B). \\( x^((1<<m)<<p) \\)",
+	"(C). \\( x^(((1<<m)-1)<<p) \\)",
+	"(D). \\( x|((1<<m)<<p) \\)"
 	],
 	correct: "(C)"
 	}
