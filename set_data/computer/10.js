@@ -282,7 +282,7 @@ window.SET_DATA = {
 		x is the input integer; p is the starting position of the bit range (0-based, LSB at position 0); m is the number of bits to toggle; and No overflow or invalid input conditions occur. <br>
 		Which of the following correctly toggles m bits of x starting from position p?`,
 	options: [
-	"(A). \\( x \\ & \\ \\sim(((1 \\ll m)-1) \\ll p) \\)",
+	"(A). \\( x \\ \\& \\ \\sim(((1 \\ll m)-1) \\ll p) \\)",
 	"(B). \\( x^{((1 \\ll m) \\ll p)} \\)",
 	"(C). \\( x^{(((1 \\ll m)-1) \\ll p)} \\)",
 	"(D). \\( x|((1 \\ll m) \\ll p) \\)"
