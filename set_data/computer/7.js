@@ -155,7 +155,7 @@ window.SET_DATA = {
 	"(C). \\(\\overline{X}Y\\)",
 	"(D). \\(X\\overline{Y}\\)"
 	],
-	correct: "(C)"
+	correct: "(A)"
 	},
 	// Q15
 	{
@@ -181,7 +181,7 @@ window.SET_DATA = {
 	},
 	// Q17
 	{
-	q: "The minimum number of NAND gates required for implementing Boolean expression, \\(AB + A\\overline{B}\\overline{C} + A\\overline{B}\\overline{C}\\) is",
+	q: "The minimum number of NAND gates required for implementing Boolean expression, \\(AB + A\\overline{B}C + A\\overline{B}\\overline{C}\\) is",
 	options: [
 	"(A). \\(1\\)",
 	"(B). \\(0\\)",
