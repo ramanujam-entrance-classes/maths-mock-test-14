@@ -611,8 +611,8 @@ body {
     
     <div id="quiz-content" class="hidden tex2jax_process">        
         <form id="quiz-form">
-		<div class="question-range">
-  			Question 01 to 50
+		<div class="question-range" id="question-range">
+		    Question 01 to 50
 		</div>
 	</form>
         <button id="submit-btn" class="btn btn-submit">Submit</button>
@@ -646,6 +646,8 @@ body {
             correct: 12,
             wrong: -3
         },
+		totalQuestions: 50,
+        durationMinutes: 70,
 
         availableSets: [
              1,2,3,4,5,6,7,8,9,10,11,12,13,
@@ -664,6 +666,8 @@ body {
             correct: 6,
             wrong: -1.5
         },
+		totalQuestions: 20,
+        durationMinutes: 20,
 
         availableSets: [
             1,2,3,4,5,6
@@ -681,6 +685,8 @@ body {
             correct: 12,
             wrong: -3
         },
+		totalQuestions: 50,
+        durationMinutes: 70,
 
         notAllowed: [],
 
