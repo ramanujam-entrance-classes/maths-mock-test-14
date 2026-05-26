@@ -27,10 +27,10 @@ window.SET_DATA = {
 	{
 	q: "Consider \\(4\\)-bit gray code representation of numbers. Let \\(h_3 h_2 h_1 h_0\\) be the gray code representation of a number \\(n\\) and \\(g_3 g_2 g_1 g_0\\) be the gray code representation of the number \\((n+1)\\) modulo \\(15\\). Which one of the following functions is correct?",
 	options: [
-	"(A). \\(g_0(h_3 h_2 h_1 h_0)=\\Sigma(1,2,3,6,10,13,14,15)\\)",
-	"(B). \\(g_1(h_3 h_2 h_1 h_0)=\\Sigma(4,9,10,11,12,13,14,15)\\)",
-	"(C). \\(g_2(h_3 h_2 h_1 h_0)=\\Sigma(2,4,5,6,7,12,13,15)\\)",
-	"(D). \\(g_3(h_3 h_2 h_1 h_0)=\\Sigma(0,1,6,7,10,11,12,13)\\)"
+	"(A). \\(g_0(h_3 h_2 h_1 h_0)=\\)\\(\\Sigma(1,2,3,6,10,13,14,15)\\)",
+	"(B). \\(g_1(h_3 h_2 h_1 h_0)=\\)\\(\\Sigma(4,9,10,11,12,13,14,15)\\)",
+	"(C). \\(g_2(h_3 h_2 h_1 h_0)=\\)\\(\\Sigma(2,4,5,6,7,12,13,15)\\)",
+	"(D). \\(g_3(h_3 h_2 h_1 h_0)=\\)\\(\\Sigma(0,1,6,7,10,11,12,13)\\)"
 	],
 	correct: "(B)"
 	},
