@@ -143,7 +143,10 @@ function initApp(data) {
 
 function attachEvents() {
     startBtn.addEventListener('click', startQuiz);
-    submitBtn.addEventListener('click', submitQuiz);
+    submitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        submitQuiz();
+    });
 }
 
 const startBtn = document.getElementById('start-btn');
@@ -450,7 +453,7 @@ function enableNavigationLinks() {
 }
 
 function startQuiz() {
-
+    if (examStarted) return;
     const nameInput =
         document.getElementById('student-name');
 
@@ -494,6 +497,8 @@ function startQuiz() {
         enterFullscreen();
         enableWakeLock();
 
+        timeLeft = totalTime;
+        clearInterval(timerInterval);
         startTimer();
 
         hideLoader();
