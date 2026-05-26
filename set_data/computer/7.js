@@ -69,7 +69,9 @@ window.SET_DATA = {
 	},
 	// Q7
 	{
-	q: "Consider the following circuit. How many minimum numbers of two input NAND gates are required to design the above circuit?",
+	q: `Consider the following circuit. 
+		<br> <img src="images/computer_mocktest7_q7.png" alt="Question 7 Diagram" style="max-width:100%; height:auto; display:block; margin:auto;">
+		<br>How many minimum numbers of two input NAND gates are required to design the above circuit?`,
 	options: [
 	"(A). \\(6\\)",
 	"(B). \\(4\\)",
