@@ -169,58 +169,162 @@ window.SET_DATA = {
 	},
 	// Q16
 	{
-	q: "A CPU has an arithmetic unit that adds bytes and then sets its \\(V\\), \\(C\\) and \\(Z\\) flag bits as follows: The \\(V\\)-bit is set if arithmetic overflow occurs. The \\(C\\)-bit is set if a carry-out is generated from the most significant bit during an operation. The \\(Z\\)-bit is set if the result is zero. What are the values of the \\(V\\), \\(C\\) and \\(Z\\) flag bits respectively after the \\(8\\)-bit bytes \\(11001100\\) and \\(10001111\\) are added?",
+	q: "Which of the following is the CORRECT truth table for the XOR Gate with two binary inputs \\(A\\) and \\(B\\)?",
 	options: [
-	"(A). \\(0,0,0\\)",
-	"(B). \\(1,1,0\\)",
-	"(C). \\(1,1,1\\)",
-	"(D). \\(0,1,0\\)"
+	`(A). <table style="text-align:center;width:100%;border:1px solid black;border-collapse:collapse;">
+			<tr>
+				<th style="text-align:center;border:1px solid black"> \\(A\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(B\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(A \\ XOR \\ B\\) </th>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+		  </table>`,
+	`(B). <table style="text-align:center;width:100%;border:1px solid black;border-collapse:collapse;">
+			<tr>
+				<th style="text-align:center;border:1px solid black"> \\(A\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(B\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(A \\ XOR \\ B\\) </th>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+		  </table>`,
+	`(C). <table style="text-align:center;width:100%;border:1px solid black;border-collapse:collapse;">
+			<tr>
+				<th style="text-align:center;border:1px solid black"> \\(A\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(B\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(A \\ XOR \\ B\\) </th>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+		  </table>`,
+	`(D). <table style="text-align:center;width:100%;border:1px solid black;border-collapse:collapse;">
+			<tr>
+				<th style="text-align:center;border:1px solid black"> \\(A\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(B\\) </th>
+				<th style="text-align:center;border:1px solid black"> \\(A \\ XOR \\ B\\) </th>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(0\\) </td>
+			</tr>
+			<tr>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+				<td style="text-align:center;border:1px solid black"> \\(1\\) </td>
+			</tr>
+		  </table>`
 	],
-	correct: "(B)"
+	correct: "(C)"
 	},
 	// Q17
 	{
-	q: "Which one of the following statements is always true?",
+	q: "In an instruction execution pipeline, the earliest that the instruction TLB and data TLB can be accessed are",
 	options: [
-	"(A). A compiled program uses more memory than an interpreted program.",
-	"(B). A compiler converts a program to a lower level language for execution.",
-	"(C). A compiler for a high level language takes less memory than its interpreter.",
-	"(D). Compiled programs take more time to execute than interpreted programs."
+	"(A). Fetch stage and memory stage respectively",
+	"(B). Memory stage and execute stage respectively",
+	"(C). Memory stage and memory stage respectively",
+	"(D). Fetch stage and fetch stage respectively"
 	],
-	correct: "(B)"
+	correct: "(A)"
 	},
 	// Q18
 	{
-	q: "Floating point numbers in a computer are represented using a \\(10\\)-bit mantissa (including a sign bit) and a \\(7\\)-bit exponent (including a sign bit). What is the approximate value of the maximum number, which can be represented? Assume that the mantissa is stored in the normalised form, that is, without leading zeroes.",
+	q: "In \\(8\\)-bit two's complement arithmetic, compute the result of the following addition: \\(A=10011001\\), \\(B=11010111\\). What is the resulting \\(8\\)-bit binary value?",
 	options: [
-	"(A). \\(2^{128}\\)",
-	"(B). \\(2^{127}\\)",
-	"(C). \\(2^{64}\\)",
-	"(D). \\(2^{63}\\)"
+	"(A). \\(11100100\\)",
+	"(B). \\(01110001\\)",
+	"(C). Result is invalid",
+	"(D). \\(01110000\\)"
 	],
-	correct: "(D)"
+	correct: "(C)"
 	},
 	// Q19
 	{
-	q: "The capacity of a memory unit is defined by the number of words multiplied by the number of bits per word. How many separate address and data line are needed for a memory of \\(4K \\times 16\\)?",
+	q: "Consider a system with a CPU having \\(6\\) registers and \\(32\\)-bit instructions. The maximum possible size of the main memory is \\(512\\text{KB}\\) \\((1K=2^{10})\\). Each instruction takes two registers and one memory address as operands. Which one of the following correctly gives the maximum possible distinct instructions that can be there in the instruction set of the CPU?",
 	options: [
-	"(A). \\(10\\) address lines and \\(16\\) data lines",
-	"(B). \\(12\\) address lines and \\(10\\) data lines",
-	"(C). \\(12\\) address lines and \\(16\\) data lines",
-	"(D). \\(12\\) address lines and \\(8\\) data lines"
+	"(A). \\(256\\)",
+	"(B). \\(128\\)",
+	"(C). \\(64\\)",
+	"(D). \\(1024\\)"
 	],
-	correct: "(C)"
+	correct: "(B)"
 	},
 	// Q20
 	{
-	q: "The main disadvantage of direct mapping of cache organization is that",
+	q: "What is the equivalent decimal value of the unsigned binary number \\(10101.10101_2\\)?",
 	options: [
-	"(A). it doesn't allow simultaneous access to the intended data and its tag.",
-	"(B). it is more expensive than other type of organizations.",
-	"(C). the cache hit ratio is degraded if two or more blocks used alternatively map onto the same block frame in the cache.",
-	"(D). the number of blocks required for the cache increases linearly with the size of the main memory."
+	"(A). \\(51.125\\)",
+	"(B). \\(125.25\\)",
+	"(C). \\(25.375\\)",
+	"(D). \\(21.65625\\)"
 	],
-	correct: "(C)"
+	correct: "(D)"
 	}
  ]
 };
