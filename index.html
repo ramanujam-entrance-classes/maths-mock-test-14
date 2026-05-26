@@ -1201,12 +1201,33 @@ randomBtn.addEventListener("click", () => {
 	}*/
 
 	function goToLeaderboard() {
+
+	    const category = getCategory();
+	    const topic = getTopic();
+	
+	    let leaderboardUrl = "";
+	
 	    if (setName === "random") {
-	        window.open(`leaderboard.html?set=${window.TEST_SEED_DATE}`, "_blank");
+	
+	        leaderboardUrl =
+	            `leaderboard.html?category=${category}&set=${window.TEST_SEED_DATE}`;
+	
 	    } else {
-	        window.open(`leaderboard.html?set=${setName}`, "_blank");
+	
+	        leaderboardUrl =
+	            `leaderboard.html?category=${category}&set=${setName}`;
 	    }
-	}
+	
+	    if (
+	        category === "topicwise"
+	        && topic
+	    ) {
+	
+	        leaderboardUrl += `&topic=${topic}`;
+	    }
+	
+	    window.open(leaderboardUrl, "_blank");
+}
 
 	function clearMessage() {
 	    const container = document.getElementById("custom-message");
