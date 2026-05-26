@@ -110,9 +110,15 @@ function initApp(data) {
         let leaderboardUrl = "";
         
         if (setName === "random") {
-        
-            leaderboardUrl =
-                `leaderboard.html?category=${category}&set=${window.TEST_SEED_DATE}`;
+            if (category === 'topicwise')
+            {
+                leaderboardUrl =
+                    `leaderboard.html?category=${category}&topic=${topic}&set=${window.TEST_SEED_DATE}`;
+            }
+            else{
+                leaderboardUrl =
+                    `leaderboard.html?category=${category}&set=${window.TEST_SEED_DATE}`;
+            }
         }
         else {
         
