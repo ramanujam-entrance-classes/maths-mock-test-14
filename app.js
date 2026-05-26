@@ -45,7 +45,16 @@ function initApp(data) {
         questions.slice(0, maxQuestions);
     
     const totalQuestions = config.totalQuestions || questions.length;
-    
+    const duration = config?.durationMinutes || 70;
+    const metaBox = document.getElementById("test-meta-info");
+
+    if (metaBox) {
+        metaBox.innerHTML = `
+            🧮 ${totalQuestions} Questions
+            &nbsp;|&nbsp;
+            ⏱ ${duration} Minutes
+        `;
+    }
     const rangeBox =
         document.getElementById("question-range");
     
