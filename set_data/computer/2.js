@@ -3,14 +3,14 @@ window.SET_DATA = {
   questions: [
 	// Q1
 	{
-	q: "Assuming all numbers are in \\(2\\)'s complement representation, which of the following numbers is divisible by \\(11111011\\)?",
+	q: "Assuming all numbers are in \\(2's\\) complement representation, which of the following numbers is divisible by \\(11111011\\)?",
 	options: [
 	"(A). \\(11100100\\)",
 	"(B). \\(11010111\\)",
 	"(C). \\(11011011\\)",
 	"(D). None of the above"
 	],
-	correct: "(D)"
+	correct: "(A)"
 	},
 	// Q2
 	{
@@ -91,7 +91,8 @@ window.SET_DATA = {
 	},
 	// Q9
 	{
-	q: "Which of the following Boolean expression represents the shaded portion of the Venn diagram? Here, \\(\".\"\\) represents an AND operation and \\(\"+\"\\) denotes an OR operation.",
+	q: `Which of the following Boolean expression represents the shaded portion of the Venn diagram? Here, '.' represents an AND operation and '+' denotes an OR operation.
+		<br> <img src="images/computer_mocktest2_q9.png" alt="Question 9 Diagram" style="max-width:100%; height:auto; display:block; margin:auto;">`,
 	options: [
 	"(A). \\(Z' + (X.Y)\\)",
 	"(B). \\(Z.(X + Y)\\)",
@@ -102,7 +103,7 @@ window.SET_DATA = {
 	},
 	// Q10
 	{
-	q: "Consider \\(x\\) and \\(y\\) be some Boolean variables, \\(\"+\"\\) denotes the OR operation and \\(\".\"\\) denotes the AND operation. What will be the simplified form of the Boolean expression \\(x.(x + y)\\)?",
+	q: "Consider \\(x\\) and \\(y\\) be some Boolean variables, '+' denotes the OR operation and '.' denotes the AND operation. What will be the simplified form of the Boolean expression \\(x.(x + y)\\)?",
 	options: [
 	"(A). \\(y\\)",
 	"(B). \\(1\\)",
@@ -131,7 +132,7 @@ window.SET_DATA = {
 	"(C). the carry into the sign bit position and out of sign bit position are equal",
 	"(D). the carry into the sign bit position is \\(1\\)"
 	],
-	correct: "(C)"
+	correct: "(D)"
 	},
 	// Q13
 	{
