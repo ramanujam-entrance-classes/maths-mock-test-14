@@ -568,15 +568,15 @@ body {
 			        <option value="">Select Category</option>
 			
 			        <option value="maths">
-			            Maths Practice Test
+			            Mathematics
 			        </option>
 			
 			        <option value="computer">
-			            Computer Test
+			            Computer
 			        </option>
 			
 			        <option value="topicwise">
-			            Maths Topic Wise Test
+			            Mathematics Topic
 			        </option>
 			    </select>
 			</div>
@@ -661,10 +661,11 @@ body {
 
         availableSets: [
              1,2,3,4,5,6,7,8,9,10,11,12,13,
-   			 14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30
+   			 14,15,16,17,18,19,20,21,22,23,
+			 24,25,26,27,28,29,30,31,32
         ],
 
-        notAllowed: [32]
+        notAllowed: []
     },
 
     computer: {
@@ -680,15 +681,15 @@ body {
         durationMinutes: 20,
 
         availableSets: [
-            1,2,3,4
+            
         ],
 
-        notAllowed: [6]
+        notAllowed: []
     },
 
     topicwise: {
 
-        title: "Maths Topic Wise Test",
+        title: "Mathematics Topic Test",
 
         folder: "set_data/topicwise",
 		marks: {
@@ -703,15 +704,15 @@ body {
 
                 title: "Algebra",
 
-                availableSets: [1,2],
-				notAllowed: [3]
+                availableSets: [1,2,3],
+				notAllowed: []
             },
 
             calculus: {
 
                 title: "Calculus",
 
-                availableSets: [],
+                availableSets: [1],
 				notAllowed: [],
             },
 
@@ -719,8 +720,8 @@ body {
 
                 title: "Coordinate Geometry",
 
-                availableSets: [1],
-				notAllowed: [2]
+                availableSets: [1,2],
+				notAllowed: []
             }
         }
     }
