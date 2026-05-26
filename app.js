@@ -46,6 +46,8 @@ function initApp(data) {
     
     const totalQuestions = config.totalQuestions || questions.length;
     const duration = config?.durationMinutes || 70;
+    totalTime = duration * 60;
+    timeLeft = totalTime;
     const metaBox = document.getElementById("test-meta-info");
 
     if (metaBox) {
