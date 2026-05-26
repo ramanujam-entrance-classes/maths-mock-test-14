@@ -51,7 +51,7 @@ function initApp(data) {
     const metaBox = document.getElementById("test-meta-info");
 
     if (metaBox) {
-        metaBox.innerHTML = `<br>
+        metaBox.innerHTML = `
             📝 ${totalQuestions} Questions
             &nbsp;|&nbsp;
             ⏳ ${duration} Minutes
