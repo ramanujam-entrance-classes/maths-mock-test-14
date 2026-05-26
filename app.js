@@ -79,9 +79,24 @@ function initApp(data) {
                 </a>
             `;
         } else {
+            const category = getCategory();
+            const topic = getTopic();
+            
+            let leaderboardUrl =
+                `leaderboard.html?category=${category}&set=${setName}`;
+            
+            if (category === "topicwise" && topic) {
+                leaderboardUrl += `&topic=${topic}`;
+            }
+            
             heading.innerHTML = `
-                <a id="leaderboard-link" href="leaderboard.html?set=${setName}" target="_blank" style="color:#0033cc; text-decoration:none;">
+                <a id="leaderboard-link"
+                   href="${leaderboardUrl}"
+                   target="_blank"
+                   style="color:#0033cc; text-decoration:none;">
+            
                     ${data.title}
+            
                 </a>
             `;
         }
