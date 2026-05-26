@@ -706,21 +706,24 @@ body {
 
                 title: "Algebra",
 
-                availableSets: [1,2,3]
+                availableSets: [1,2,3],
+				notAllowed: [3]
             },
 
             calculus: {
 
                 title: "Calculus",
 
-                availableSets: [1]
+                availableSets: [1],
+				notAllowed: [1],
             },
 
             coordinate: {
 
                 title: "Coordinate Geometry",
 
-                availableSets: [1,2]
+                availableSets: [1,2],
+				notAllowed: [2]
             }
         }
     }
@@ -1281,19 +1284,22 @@ randomBtn.addEventListener("click", () => {
 	    // TOPICWISE
 	    // ======================
 	    if (category === "topicwise") {
-	
-	        if (!topic)
-	            return false;
-	
-	        const topicConfig =
-	            configure.topics[topic];
-	
-	        if (!topicConfig)
-	            return false;
-	
-	        availableSets =
-	            topicConfig.availableSets;
-	    }
+		
+		    if (!topic) return false;
+		
+		    const topicConfig = configure.topics[topic];
+		
+		    if (!topicConfig) return false;
+		
+		    const availableSets = topicConfig.availableSets;
+		
+		    const notAllowed = topicConfig.notAllowed || [];
+		
+		    return (
+		        availableSets.includes(setNumber) &&
+		        !notAllowed.includes(setNumber)
+		    );
+		}
 	
 	    // ======================
 	    // NORMAL CATEGORY
