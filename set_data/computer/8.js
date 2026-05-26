@@ -69,7 +69,8 @@ window.SET_DATA = {
 	},
 	// Q7
 	{
-	q: "Consider the circuit shown below and find minimum number of NAND gates required to design it.",
+	q: `Consider the circuit shown below and find minimum number of NAND gates required to design it.
+		<br> <img src="images/computer_mocktest8_q7.png" alt="Question 7 Diagram" style="max-width:100%; height:auto; display:block; margin:auto;">`,
 	options: [
 	"(A). \\(4\\)",
 	"(B). \\(6\\)",
@@ -91,7 +92,7 @@ window.SET_DATA = {
 	},
 	// Q9
 	{
-	q: "The reduced form of the Boolean function \\(F=xyz+xy'z+x'yz+xy'z+xy'z\\) is",
+	q: "The reduced form of the Boolean function \\(F=xyz+xyz'+x'yz+xy'z\\) is",
 	options: [
 	"(A). \\(xy+yz\\)",
 	"(B). \\(x+yz+xz\\)",
@@ -124,7 +125,7 @@ window.SET_DATA = {
 	},
 	// Q12
 	{
-	q: "Consider the following Boolean expression for \\(F\\): \\(F(P,Q,R,S)=PQ+\\overline{P}QR+P\\overline{Q}RS\\). The minimum sum of products form of \\(F\\) is",
+	q: "Consider the following Boolean expression for \\(F\\): \\(F(P,Q,R,S)=PQ+\\overline{P}QR+\\overline{P}Q\\overline{R}S\\). The minimum sum of products form of \\(F\\) is",
 	options: [
 	"(A). \\(PQ+QR+QS\\)",
 	"(B). \\(P+Q+R+S\\)",
@@ -197,7 +198,7 @@ window.SET_DATA = {
 	"(C). \\(\\overline{P}\\oplus\\overline{Q}=P\\oplus Q\\)",
 	"(D). \\((P\\oplus\\overline{P})\\oplus Q=(P\\odot\\overline{P})\\odot\\overline{Q}\\)"
 	],
-	correct: "(B)"
+	correct: "(D)"
 	},
 	// Q19
 	{
