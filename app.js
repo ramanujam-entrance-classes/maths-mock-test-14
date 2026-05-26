@@ -465,9 +465,9 @@ function startQuiz() {
         return;
     }
 
-    showLoader("Preparing your test...");
+    //showLoader("Preparing your test...");
 
-    setTimeout(() => {
+    //setTimeout(() => {
 
         examStarted = true;
 
@@ -503,7 +503,7 @@ function startQuiz() {
 
         hideLoader();
 
-    }, 50);
+    //}, 50);
 }
 
 function startTimer() {
