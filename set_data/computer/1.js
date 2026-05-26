@@ -80,7 +80,7 @@ window.SET_DATA = {
 	},
 	// Q8
 	{
-	q: "The function \\(ABC + A'BC + ABC' + A'BC\\) is equivalent to",
+	q: "The function \\(ABC + A'BC + ABC' + A'B'C\\) is equivalent to",
 	options: [
 	"(A). \\(AC' + AB + A'C\\)",
 	"(B). \\(AB' + AC' + A'C\\)",
@@ -102,7 +102,7 @@ window.SET_DATA = {
 	},
 	// Q10
 	{
-	q: "Given \\((224)_r = (13)_7\\), the value of radix \\(r\\) is",
+	q: "Given \\(\\sqrt{(224)_r} = (13)_r\\), the value of radix \\(r\\) is",
 	options: [
 	"(A). \\(10\\)",
 	"(B). \\(8\\)",
@@ -124,7 +124,8 @@ window.SET_DATA = {
 	},
 	// Q12
 	{
-	q: "Identify the logic function performed by the circuit.",
+	q: `Identify the logic function performed by the circuit.
+		<br> <img src="images/computer_mocktest1_q12.png" alt="Question 12 Diagram" style="max-width:100%; height:auto; display:block; margin:auto;">`,
 	options: [
 	"(A). Exclusive OR",
 	"(B). Exclusive NOR",
@@ -135,7 +136,10 @@ window.SET_DATA = {
 	},
 	// Q13
 	{
-	q: "Which of the following is (are) true about virtual memory systems that uses pages? I. The virtual address space can be larger than the amount of physical memory. II. Programs must be resident in main memory throughout their execution. III. Pages correspond to semantic characteristics of the programs.",
+	q: `Which of the following is (are) true about virtual memory systems that uses pages? 
+		<br>I. The virtual address space can be larger than the amount of physical memory. 
+		<br>II. Programs must be resident in main memory throughout their execution. 
+		<br>III. Pages correspond to semantic characteristics of the programs.`,
 	options: [
 	"(A). I only",
 	"(B). II only",
@@ -146,7 +150,7 @@ window.SET_DATA = {
 	},
 	// Q14
 	{
-	q: "The minimum number of gates needed to implement the Boolean function \\(f(x,y,z)= z(x+y)+(\\overline{z}+x+y)(\\overline{x}+\\overline{y})\\) is",
+	q: "The minimum number of gates needed to implement the Boolean function \\(f(x,y,z)= z(x+y)+\\overline{(\\overline{z}+x+y)(\\overline{x}+\\overline{y})}\\) is",
 	options: [
 	"(A). \\(2\\)",
 	"(B). \\(3\\)",
@@ -214,9 +218,9 @@ window.SET_DATA = {
 	{
 	q: "The switching expression corresponding to \\(f(A,B,C,D)=\\Sigma(1,4,5,9,11,12)\\) is",
 	options: [
-	"(A). \\(B\\overline{C}\\overline{D}+\\overline{A}CD+\\overline{A}BD\\)",
-	"(B). \\(AB\\overline{C}+ACD+\\overline{B}CD\\)",
-	"(C). \\(AC\\overline{D}+\\overline{A}BC-AC\\overline{D}\\)",
+	"(A). \\(B\\overline{C}\\overline{D}+\\overline{A}\\overline{C}D+\\overline{A}BD\\)",
+	"(B). \\(AB\\overline{C}+ACD+\\overline{B}\\overline{C}D\\)",
+	"(C). \\(AC\\overline{D}+\\overline{A}B\\overline{C}-A\\overline{C}\\overline{D}\\)",
 	"(D). \\(\\overline{A}BD+AC\\overline{D}+BC\\overline{D}\\)"
 	],
 	correct: "(A)"
