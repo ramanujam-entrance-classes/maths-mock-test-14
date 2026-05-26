@@ -21,7 +21,7 @@ window.SET_DATA = {
 	"(C). \\(2^{2^{n-1}}\\)",
 	"(D). \\(2^{n+1}\\)"
 	],
-	correct: "(B)"
+	correct: "(A)"
 	},
 	// Q3
 	{
@@ -58,9 +58,9 @@ window.SET_DATA = {
 	},
 	// Q6
 	{
-	q: "\\(P\\) is a \\(16\\)-bit signed integer. The \\(2\\)'s complement representation of \\(P\\) is \\((F87B)_{16}\\). The \\(2\\)'s complement representation of \\(8P\\) is",
+	q: "\\(P\\) is a \\(16\\)-bit signed integer. The \\(2\\)'s complement representation of \\(P\\) is \\((F87B)_{18}\\). The \\(2\\)'s complement representation of \\(8P\\) is",
 	options: [
-	"(A). \\((C3D8)_{16}\\)",
+	"(A). \\((C3D8)_{36}\\)",
 	"(B). \\((187B)_{16}\\)",
 	"(C). \\((187B)_{16}\\)",
 	"(D). \\((987B)_{16}\\)"
@@ -69,7 +69,9 @@ window.SET_DATA = {
 	},
 	// Q7
 	{
-	q: "Given, \\(f_1\\), \\(f_3\\) and \\(f\\) in canonical sum of products form from the circuit where \\(f_1=\\Sigma m(4,5,6,7,8)\\), \\(f_3=\\Sigma m(1,6,15)\\) and \\(f=\\Sigma m(1,6,8,15)\\), then \\(f_2\\) is",
+	q: `Given, \\(f_1\\), \\(f_3\\) and \\(f\\) in canonical sum of products form from the circuit 
+		<br> <img src="images/computer_mocktest4_q7.png" alt="Question 7 Diagram" style="max-width:100%; height:auto; display:block; margin:auto;"><br>
+		\\(f_1=\\Sigma m(4,5,6,7,8)\\), \\(f_3=\\Sigma m(1,6,15)\\) and \\(f=\\Sigma m(1,6,8,15)\\), then \\(f_2\\) is`,
 	options: [
 	"(A). \\(\\Sigma(4,6)\\)",
 	"(B). \\(\\Sigma(4,8)\\)",
@@ -80,7 +82,7 @@ window.SET_DATA = {
 	},
 	// Q8
 	{
-	q: "Which of the following is equivalent to the expression \\(\\overline{(X+Y+Z)}\\)?",
+	q: "Which of the following is equivalent to the expression \\(\\overline{(\\overline{X+Y}+Z)}\\)?",
 	options: [
 	"(A). \\((\\bar{X}+\\bar{Y})Z\\)",
 	"(B). \\((X+Y)\\bar{Z}\\)",
