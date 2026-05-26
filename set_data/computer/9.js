@@ -69,7 +69,7 @@ window.SET_DATA = {
 	},
 	// Q7
 	{
-	q: "A hypothetical number system uses digits \\(\\{0,1,X\\}\\). Its numbers are ordered lexicographically: \\(00,01,0X,10,11,1X,X0,X1,XX,\\ldots\\). Which digit sequence is at the \\(10^{th}\\) position?",
+	q: "A hypothetical number system uses digits \\(\\{0,1,X\\}\\). Its numbers are ordered lexicographically: \\(00,01,0X,10,\\ldots\\). Which digit sequence is at the \\(10^{th}\\) position?",
 	options: [
 	"(A). \\(X0\\)",
 	"(B). \\(XX\\)",
