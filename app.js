@@ -775,10 +775,23 @@ function sendToLeaderboard(name, score, total, testName, timeTaken) {
 
   console.log("Sending:", payload);
 
-  fetch(url, {
+  /*fetch(url, {
     method: "POST",
     body: JSON.stringify(payload)
-  })
+  })*/
+  const formData = new FormData();
+
+    formData.append("action", "leaderboard");
+    formData.append("name", name);
+    formData.append("score", score);
+    formData.append("total", total);
+    formData.append("test", testName);
+    formData.append("time", timeTaken);
+    
+    fetch(url, {
+        method: "POST",
+        body: formData
+    })
   .then(res => res.text())
   .then(data => console.log("Response:", data))
   .catch(err => console.error("Fetch error:", err));
