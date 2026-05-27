@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Login | RAMANUJAM ENTRANCE CLASSES</title>
+
+<style>
+
+:root{
+    --primary:#3498db;
+    --dark:#1a2a6c;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family:'Segoe UI',sans-serif;
+
+    background:
+    linear-gradient(
+        135deg,
+        #1a2a6c,
+        #3498db
+    );
+}
+
+.login-card{
+
+    width:90%;
+    max-width:400px;
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:18px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.2);
+
+    text-align:center;
+}
+
+.login-title{
+
+    color:#1a2a6c;
+
+    margin-bottom:10px;
+}
+
+.login-sub{
+
+    color:#777;
+
+    margin-bottom:30px;
+
+    font-size:14px;
+}
+
+.input-box{
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:18px;
+
+    border-radius:10px;
+
+    border:2px solid #ddd;
+
+    font-size:15px;
+
+    box-sizing:border-box;
+}
+
+.input-box:focus{
+
+    border-color:#3498db;
+
+    outline:none;
+}
+
+.login-btn{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #1a2a6c,
+        #3498db
+    );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.login-btn:hover{
+
+    transform:translateY(-2px);
+}
+
+#error-msg{
+
+    color:red;
+
+    margin-top:15px;
+
+    font-size:14px;
+}
+
+.loader{
+
+    display:none;
+
+    margin-top:15px;
+
+    color:#555;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-card">
+
+    <h2 class="login-title">
+        RAMANUJAM ENTRANCE CLASSES
+    </h2>
+
+    <div class="login-sub">
+        Student Login Portal
+    </div>
+
+    <input
+        type="text"
+        id="userid"
+        class="input-box"
+        placeholder="User ID">
+
+    <input
+        type="password"
+        id="password"
+        class="input-box"
+        placeholder="Password">
+
+    <button
+        class="login-btn"
+        onclick="login()">
+
+        LOGIN
+    </button>
+
+    <div class="loader" id="loader">
+        Verifying credentials...
+    </div>
+
+    <div id="error-msg"></div>
+
+</div>
+
+<script>
+
+const API_URL =
+"YOUR_APPS_SCRIPT_URL";
+
+if(localStorage.getItem("mockUser")){
+
+    window.location.href = "index.html";
+}
+
+async function login(){
+
+    const userid =
+        document.getElementById("userid")
+        .value.trim();
+
+    const password =
+        document.getElementById("password")
+        .value.trim();
+
+    const error =
+        document.getElementById("error-msg");
+
+    const loader =
+        document.getElementById("loader");
+
+    error.innerHTML = "";
+
+    if(!userid || !password){
+
+        error.innerHTML =
+        "Please enter credentials";
+
+        return;
+    }
+
+    loader.style.display = "block";
+
+    try{
+
+        const response =
+        await fetch(API_URL,{
+
+            method:"POST",
+
+            body:JSON.stringify({
+                userid,
+                password
+            })
+        });
+
+        const data =
+            await response.json();
+
+        loader.style.display = "none";
+
+        if(data.success){
+
+            localStorage.setItem(
+                "mockUser",
+                JSON.stringify(data)
+            );
+
+            window.location.href =
+                "index.html";
+        }
+        else{
+
+            error.innerHTML =
+            "Invalid userid or password";
+        }
+
+    }catch(err){
+
+        loader.style.display = "none";
+
+        error.innerHTML =
+        "Server error";
+    }
+}
+
+</script>
+
+</body>
+</html>
