@@ -49,7 +49,8 @@ function initApp(data) {
     totalTime = duration * 60;
     timeLeft = totalTime;
     const metaBox = document.getElementById("test-meta-info");
-
+    const studentName =
+    
     if (metaBox) {
         metaBox.innerHTML = `
             📝 ${totalQuestions} Questions
