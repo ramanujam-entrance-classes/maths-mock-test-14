@@ -213,7 +213,9 @@ body {
 <body>
 
 <div class="leaderboard-container">
-
+  <button id="logout-btn">
+        Logout
+  </button>
   <!-- 🏆 MAIN TITLE -->
   <h2 class="title">🏆 Leaderboard</h2>
 
@@ -427,6 +429,15 @@ function renderLeaderboard() {
 }
 
 window.onload = loadLeaderboard;
+
+document
+.getElementById("logout-btn")
+.addEventListener("click", () => {
+
+    localStorage.removeItem("mocktest_user");
+
+    window.location.href = "login.html";
+});
 </script>
 
 </body>
