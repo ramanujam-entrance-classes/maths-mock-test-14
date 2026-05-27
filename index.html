@@ -793,14 +793,10 @@ const dropdown =
   const cmd = params.get("cmd");
   
 	const user = JSON.parse(localStorage.getItem("mockUser"));
-	document.getElementById("user-info")
-	.innerHTML = `
-		👤 ${user.name}`;
+	document.getElementById("user-info").innerHTML = `👤 ${user.name}`;
 	document.getElementById("logout-btn")
 		.addEventListener("click", () => {
-		
 			localStorage.removeItem("mockUser");
-		
 			window.location.href = "login.html";
 		});
 	
