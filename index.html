@@ -793,8 +793,8 @@ const dropdown =
   const randomBtn = document.getElementById("random-btn");
   const cmd = params.get("cmd");
   
-	const user = JSON.parse(localStorage.getItem("mockUser"));
-	document.getElementById("user-info").innerHTML = `👤 ${user.name}`;
+	const studentName = localStorage.getItem("studentName");
+	document.getElementById("user-info").innerHTML = `👤 ${studentName}`;
 	document.getElementById("logout-btn")
 		.addEventListener("click", () => {
 			localStorage.removeItem("mockUser");
