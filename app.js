@@ -765,6 +765,7 @@ function sendToLeaderboard(name, score, total, testName, timeTaken) {
   const url = "https://script.google.com/macros/s/AKfycbybHrxfFGve-yIBXsIwZkoiEUZ1UdhMOwhwRusd7UGjBuGrnTNuiBhQr2QasPyHY1Hz/exec";
 
   const payload = {
+    action: "leaderboard",
     name: name,
     score: score,
     total: total,
