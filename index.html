@@ -539,6 +539,9 @@ body {
       RAMANUJAM ENTRANCE CLASSES
     </a>
   </h2>-->
+<button id="logout-btn">
+    Logout
+</button>
 <h2 class="site-title">
   <a id="home-link" href="index.html">RAMANUJAM ENTRANCE CLASSES</a>
 </h2>
@@ -555,6 +558,7 @@ body {
        			<!--Note: Each correct answer carries <span style="font-size:14px; color:green;font-weight:bold"> +12 </span>marks and each incorrect answer carries <span style="font-size:14px; color:red;font-weight:bold">−3</span> marks.-->
     		 </span>
 	<div id="student-display" class="hidden"></div>
+	<div id="user-info"></div>
     </header>
 
     <div id="timer-box" class="hidden timer-green">🕒70:00</div>
@@ -781,6 +785,18 @@ const dropdown =
   const randomBtn = document.getElementById("random-btn");
   const cmd = params.get("cmd");
   
+	const user = JSON.parse(localStorage.getItem("mockUser"));
+	document.getElementById("user-info")
+	.innerHTML = `
+		👤 ${user.name}`;
+	document.getElementById("logout-btn")
+		.addEventListener("click", () => {
+		
+			localStorage.removeItem("mockUser");
+		
+			window.location.href = "login.html";
+		});
+	
   dropdown.addEventListener("change", () => {
 	    if (dropdown.value) {
 	        dropdown.style.color = "#000";
