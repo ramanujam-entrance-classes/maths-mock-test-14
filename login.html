@@ -169,7 +169,7 @@ body{
 
     <button
         class="login-btn"
-        onclick="login()">
+        onclick="loginUser()>
 
         LOGIN
     </button>
@@ -186,8 +186,7 @@ body{
 
 const API_URL = "https://script.google.com/macros/s/AKfycbybHrxfFGve-yIBXsIwZkoiEUZ1UdhMOwhwRusd7UGjBuGrnTNuiBhQr2QasPyHY1Hz/exec";
 
-if(localStorage.getItem("mockUser")){
-
+if(localStorage.getItem("loggedIn") === "true"){
     window.location.href = "index.html";
 }
 
@@ -204,17 +203,15 @@ async function loginUser() {
         return;
     }
 
-    const formData = new FormData();
-
-    formData.append("action", "login");
-    formData.append("userid", userid);
-    formData.append("password", password);
-
     try {
 
         const response = await fetch(API_URL, {
             method: "POST",
-            body: formData
+            body: JSON.stringify({
+                action: "login",
+                userid,
+                password
+            })
         });
 
         const result = await response.json();
@@ -225,18 +222,18 @@ async function loginUser() {
                 "mocktest_user",
                 JSON.stringify(result)
             );
-            localStorage.setItem("studentName", data.name);
+
+            localStorage.setItem("studentName", result.name);
+            localStorage.setItem("loggedIn", "true");
+
             window.location.href = "index.html";
 
         } else {
-
             alert("Invalid userid or password");
         }
 
     } catch (err) {
-
         console.error(err);
-
         alert("Login failed");
     }
 }
