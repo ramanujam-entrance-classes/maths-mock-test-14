@@ -644,6 +644,14 @@ body {
 <script src="app.js"></script>
 	
 <script>
+	const authUser =
+    JSON.parse(localStorage.getItem("mockUser"));
+	
+	if (!authUser) {
+	
+	    window.location.href = "login.html";
+	}
+	
   // ✅ CONTROLLED SET LIST
 	const TEST_CATEGORIES = {
 
