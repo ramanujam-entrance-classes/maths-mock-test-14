@@ -191,75 +191,53 @@ if(localStorage.getItem("mockUser")){
     window.location.href = "index.html";
 }
 
-async function login(){
+async function loginUser() {
 
     const userid =
-        document.getElementById("userid")
-        .value.trim();
+        document.getElementById("userid").value.trim();
 
     const password =
-        document.getElementById("password")
-        .value.trim();
+        document.getElementById("password").value.trim();
 
-    const error =
-        document.getElementById("error-msg");
-
-    const loader =
-        document.getElementById("loader");
-
-    error.innerHTML = "";
-
-    if(!userid || !password){
-
-        error.innerHTML =
-        "Please enter credentials";
-
+    if (!userid || !password) {
+        alert("Enter userid and password");
         return;
     }
 
-    loader.style.display = "block";
+    const formData = new FormData();
 
-    try{
+    formData.append("action", "login");
+    formData.append("userid", userid);
+    formData.append("password", password);
 
-        const response =
-        await fetch(API_URL,{
+    try {
 
-            method:"POST",
-
-            body:JSON.stringify({
-                action: "login",
-                userid,
-                password
-            })
+        const response = await fetch(API_URL, {
+            method: "POST",
+            body: formData
         });
 
-        const data =
-            await response.json();
+        const result = await response.json();
 
-        loader.style.display = "none";
-
-        if(data.success){
+        if (result.success) {
 
             localStorage.setItem(
-                "mockUser",
-                JSON.stringify(data)
+                "mocktest_user",
+                JSON.stringify(result)
             );
 
-            window.location.href =
-                "index.html";
-        }
-        else{
+            window.location.href = "index.html";
 
-            error.innerHTML =
-            "Invalid userid or password";
+        } else {
+
+            alert("Invalid userid or password");
         }
 
-    }catch(err){
+    } catch (err) {
 
-        loader.style.display = "none";
+        console.error(err);
 
-        error.innerHTML =
-        "Server error";
+        alert("Login failed");
     }
 }
 
