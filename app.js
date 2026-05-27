@@ -630,7 +630,7 @@ function submitQuiz() {
         let totalMarks = 0;
         let scoredMarks = 0;
     
-        const studentName = document.getElementById('student-name').value;
+        const studentName = user.name; //document.getElementById('student-name').value;
         const labels = ["(A)", "(B)", "(C)", "(D)"];  
         const MARKS = getMarkingScheme();
         const CORRECT_MARKS = MARKS.correct;
