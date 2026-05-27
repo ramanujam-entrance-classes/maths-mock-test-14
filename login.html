@@ -225,7 +225,7 @@ async function loginUser() {
                 "mocktest_user",
                 JSON.stringify(result)
             );
-
+            localStorage.setItem("studentName", data.name);
             window.location.href = "index.html";
 
         } else {
