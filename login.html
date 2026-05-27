@@ -169,7 +169,7 @@ body{
 
     <button
         class="login-btn"
-        onclick="loginUser()>
+        onclick="loginUser()">
 
         LOGIN
     </button>
@@ -192,18 +192,19 @@ if(localStorage.getItem("loggedIn") === "true"){
 
 async function loginUser() {
 
-    const userid =
-        document.getElementById("userid").value.trim();
+    const loader = document.getElementById("loader");
+    const errorBox = document.getElementById("error-msg");
 
-    const password =
-        document.getElementById("password").value.trim();
-
-    if (!userid || !password) {
-        alert("Enter userid and password");
-        return;
-    }
+    errorBox.innerText = "";
+    loader.style.display = "block";
 
     try {
+
+        const userid =
+            document.getElementById("userid").value.trim();
+
+        const password =
+            document.getElementById("password").value.trim();
 
         const response = await fetch(API_URL, {
             method: "POST",
@@ -216,25 +217,25 @@ async function loginUser() {
 
         const result = await response.json();
 
+        loader.style.display = "none";
+
         if (result.success) {
 
-            localStorage.setItem(
-                "mocktest_user",
-                JSON.stringify(result)
-            );
-
+            localStorage.setItem("mocktest_user", JSON.stringify(result));
             localStorage.setItem("studentName", result.name);
             localStorage.setItem("loggedIn", "true");
 
             window.location.href = "index.html";
 
         } else {
-            alert("Invalid userid or password");
+            errorBox.innerText = "Invalid userid or password";
         }
 
     } catch (err) {
+
+        loader.style.display = "none";
         console.error(err);
-        alert("Login failed");
+        errorBox.innerText = "Login failed";
     }
 }
 
